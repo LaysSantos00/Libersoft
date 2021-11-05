@@ -39,9 +39,48 @@ public class AlunoController {
 
 	@PostMapping("/bibliotecario/cadastrarAluno")
 	public String cadastrarAluno(Aluno aluno) {
-		System.out.println(aluno.getNome());
+		
+		// VALIDAÇÕES TESTE //
+		if (
+				aluno.getNome() == "" || 
+				aluno.getEmail() == "" || 
+				aluno.getSenha() == "" ||
+				aluno.getTelefone() == "" || 
+				aluno.getEndereco() == "" || 
+				aluno.getCpf() == ""
+				) {
+			System.out.println("campo nulo");
+			return "formAluno";
+		} else if (
+				aluno.getNome().length() < 3 ||
+				aluno.getEmail().length() < 13 ||
+				aluno.getSenha().length() < 8 ||
+				aluno.getTelefone().length() < 10 ||
+				aluno.getEndereco().length() < 8 ||
+				aluno.getCpf().length() != 11
+				) {
+			System.out.println("tamanho pequeno");
+			return "formAluno";
+		} else if (
+				aluno.getNome().length() > 100 ||
+				aluno.getEmail().length() > 100 ||
+				aluno.getSenha().length() > 20 ||
+				aluno.getTelefone().length() > 11 ||
+				aluno.getEndereco().length() > 70 ||
+				aluno.getCpf().length() > 11
+				) {
+			System.out.println("tamanho grande");
+			return "formAluno";
+		} else {
+			this.alunoDAO.save(aluno);
+			return "listarAlunos";
+		}
+		// VALIDAÇÕES TESTE //
+		
+		/* SE NÃO FOR USAR ESSAS VALIDAÇÕES ACIMA, DESCOMENTAR ABAIXO E RETIRAR AS VALIDAÇÕES
 		this.alunoDAO.save(aluno);
-		return "listarAlunos";
+		return "listarAlunos"; 
+		 */
 	}
 
 	@GetMapping("/bibliotecario/editarAluno")
