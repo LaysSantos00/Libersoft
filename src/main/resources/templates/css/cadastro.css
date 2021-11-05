@@ -1,0 +1,136 @@
+
+/* CONFIGURAÇÕES GERAIS */
+
+* {
+	font-family: 'Roboto-Regular', sans-serif;
+}
+
+html {
+	height: 100%;
+}
+
+h1 {
+	color: #013974;
+	text-align: center;
+}
+
+hr {
+	 margin: 2vh 0;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	background-color: #013974;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b3995d; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a68e56; 
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #998350; 
+}
+
+/* CONFIGURA��ES GERAIS */
+
+/* CONFIGURA��ES DO CONTE�DO */
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	/*justify-content: center;*/
+	height: auto;
+	width: 50%;
+	padding: 1vh 2vh;
+	border-radius: 5px;
+	box-shadow: 0 0 5px #000;
+	background-color: white;
+}
+
+.wrapper >*.formAluno {
+	display:flex;
+	flex-direction: column;
+	width: 100%;
+	align-items: stretch;
+}
+
+/* CONFIGURA��ES DO CONTE�DO */
+
+/* CONFIGURA��ES DO TEXTO DO TOPO */
+.cadastroTopo {
+	text-align: left;
+	width: 100%;
+}
+
+.titulo {
+	font-size: 5vh;
+}
+
+.subtitulo {
+	color: #606770;
+	font-size: 2vh;
+}
+/* CONFIGURA��ES DO TEXTO DO TOPO */
+
+/* CONFIGURA��ES DOS INPUTS */
+.inputText {
+	font-size: 2.5vh;
+	padding: 1vh 2.5vh;
+	margin: 0.5vh 0px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.inputText:focus {
+	outline: none;
+    border-color: #013974;
+	box-shadow: 0 0 10px #013974;
+}
+
+::placeholder {
+	color: #8d949e !important;
+}
+/* CONFIGURA��ES DOS INPUTS */
+
+/* CONFIGURA��ES DOS BOT�ES */
+.mainbtn {
+	font-family: 'Roboto-Medium', sans-serif;
+	background-color: #013974;
+	color: white;
+	padding: 1.5vh 1.5vh;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	width: 100%;
+}
+
+.button1 {
+	font-size: 3vh;
+	margin: 0.5vh 0;
+}
+
+.button1:hover {
+	background-color: #013266;
+}
+
+.button1:active {
+	background-color: #012c59;
+}
+/* CONFIGURA��ES DOS BOT�ES */
