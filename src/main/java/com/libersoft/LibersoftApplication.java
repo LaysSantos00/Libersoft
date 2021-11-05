@@ -1,4 +1,4 @@
-package libersoft.com;
+package com.libersoft;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
