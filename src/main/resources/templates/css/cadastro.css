@@ -134,3 +134,27 @@ body {
 	background-color: #012c59;
 }
 /* CONFIGURA��ES DOS BOT�ES */
+
+@media only screen and (min-width: 900px) {
+	.wrapper {
+		width: 40%;
+	}
+}
+
+@media only screen and (min-width: 1100px) {
+	.wrapper {
+		width: 30%;
+	}
+}
+
+@media only screen and (min-width: 1300px) {
+	.wrapper {
+		width: 25%;
+	}
+}
+
+@media only screen and (min-width: 1500px) {
+	.wrapper {
+		width: 20%;
+	}
+}
