@@ -28,6 +28,10 @@ body {
 	background-color: #013974;
 }
 
+label {
+	font-size: 2.5vh;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -64,7 +68,7 @@ body {
 	background-color: white;
 }
 
-.wrapper >*.formAluno {
+.wrapper >*.form {
 	display:flex;
 	flex-direction: column;
 	width: 100%;

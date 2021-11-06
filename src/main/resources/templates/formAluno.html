@@ -16,7 +16,7 @@
 				<label class="subtitulo">Insira as informações do novo usuário.</label><hr/>				
 			</div>
 			
-			<form class="formAluno" action="/bibliotecario/cadastrarAluno" method="post" th:object="${aluno}">
+			<form class="form" action="/bibliotecario/cadastrarAluno" method="post" th:object="${aluno}">
 				<input type="hidden" th:field="*{idAluno}"/>
 				<input type="text" th:field="*{nome}" class="inputText" placeholder="Nome Completo">
 				<input type="text" th:field="*{email}" class="inputText" placeholder="Email">
