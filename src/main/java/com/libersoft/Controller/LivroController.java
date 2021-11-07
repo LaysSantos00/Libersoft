@@ -27,11 +27,6 @@ public class LivroController {
 		return "listarLivros";
 	}
 	
-	@GetMapping("/css/livros.css")
-	public String livrosCss() {
-		return "/css/livros.css";
-	}
-	
 	@GetMapping("/bibliotecario/exibirFormLivro")
 	public String exibirFormLivro(Livro livro) {
 		return "formLivro";
