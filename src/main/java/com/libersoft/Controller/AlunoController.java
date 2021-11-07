@@ -27,11 +27,6 @@ public class AlunoController {
 		return "listarAlunos";
 	}
 	
-	@GetMapping("/css/cadastro.css")
-	public String cadastroCss() {
-		return "/css/cadastro.css";
-	}
-	
 	@GetMapping("/bibliotecario/exibirFormAluno")
 	public String exibirFormAluno(Aluno aluno) {
 		return "formAluno";
