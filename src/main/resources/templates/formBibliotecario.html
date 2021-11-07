@@ -1,48 +1,43 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>Cadastro de bibliotecarios</title>
-</head>
-<body style="text-align: center">
-	<h2>de bibliotecarios</h2>
-	<form action="/adm/cadastrarBibliotecario" method="post"
-		th:object="${bibliotecario}">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width">
+		
+		<title>Cadastro de Bibliotecários</title>
+		<link rel="stylesheet" type="text/css" href="/css/cadastro.css">
+	</head>
+	<body>
+		<div class="wrapper">		
+			<div class="cadastroTopo">
+				<label class="titulo">Cadastro</label><br/>
+				<label class="subtitulo">Insira as informações do novo bibliotecário.</label><hr/>				
+			</div>
+			
+			<form class="form" action="/adm/cadastrarBibliotecario" method="post" th:object="${bibliotecario}">
+				<input type="hidden" th:field="*{idBibliotecario}"/>
+				<input type="text" autocomplete="off" th:field="*{nome}" class="inputText" placeholder="Nome Completo">
+				<input type="text" data-inputmask="'alias': 'email'" autocomplete="off" th:field="*{email}" class="inputText" placeholder="Email">
+				<input type="text" autocomplete="off" th:field="*{senha}" class="inputText" placeholder="Senha">
+				<input type="text" data-inputmask="'mask': '(99) 9 9999 9999'" th:field="*{telefone}" class="inputText" placeholder="Telefone">
+				<input type="text" data-inputmask="'mask': '999.999.999-99'" autocomplete="off" th:field="*{cpf}" class="inputText" placeholder="CPF">
+				
+				
+				<input type="submit" class="mainbtn button1" value="Cadastre">
+			</form>
 
-		<input type="hidden" th:field="*{idBibliotecario}" />
-		<div>
-			<label for="nome">Nome completo</label> <input type="text"
-				th:field="*{nome}" />
+			<a href="/adm/listarBibliotecarios"><button class="mainbtn button1">Lista Bibliotecários</button></a>
 		</div>
-		<br> <br>
-		<div>
-			<label for="email">Email</label> <input type="text"
-				th:field="*{email}" />
-		</div>
-		<br> <br>
-		<div>
-			<label for="senha">Senha</label> <input type="text"
-				th:field="*{senha}" />
-		</div>
-		<br> <br>
-		<div>
-			<label for="telefone">telefone</label> <input type="number"
-				th:field="*{telefone}" />
-		</div>
-		<br> <br>
-		<div>
-			<label for="cpf">CPF</label> <input type="text" th:field="*{cpf}" />
-		</div>
-		<br> <br>
-		<div>
-			<button type="submit">Cadastrar</button>
-		</div>
-		<br> <br>
-	</form>
-	<div style="text-align: center">
-		<a href="/adm/listarBibliotecarios"><button>Ir p lista de
-				bibliotecarios</button></a>
-	</div>
-</body>
+		
+		<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+		<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+		<script th:src="@{/assets/inputmask/jquery.inputmask.min.js}"></script>
+		
+		<script>
+		    $(":input").inputmask();
+		</script>
+	</body>
 </html>

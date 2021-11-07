@@ -19,16 +19,25 @@
 			<form class="form" action="/bibliotecario/cadastrarAluno" method="post" th:object="${aluno}">
 				<input type="hidden" th:field="*{idAluno}"/>
 				<input type="text" th:field="*{nome}" class="inputText" placeholder="Nome Completo">
-				<input type="text" th:field="*{email}" class="inputText" placeholder="Email">
+				<input type="text" data-inputmask="'alias': 'email'" autocomplete="off" th:field="*{email}" class="inputText" placeholder="Email">
 				<input type="text" th:field="*{senha}" class="inputText" placeholder="Senha">
-				<input type="text" th:field="*{telefone}" class="inputText" placeholder="Telefone">
+				<input type="text" data-inputmask="'mask': '(99) 9 9999 9999'" th:field="*{telefone}" class="inputText" placeholder="Telefone">
 				<input type="text" th:field="*{endereco}" class="inputText" placeholder="Endereço">
-				<input type="text" th:field="*{cpf}" class="inputText" placeholder="CPF">
+				<input type="text" data-inputmask="'mask': '999.999.999-99'" autocomplete="off" th:field="*{cpf}" class="inputText" placeholder="CPF">
 				
 				<input type="submit" class="mainbtn button1" value="Cadastre">
 			</form>
 
 			<a href="/bibliotecario/listarAlunos"><button class="mainbtn button1">Lista Alunos</button></a>
 		</div>
+		
+		<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+		<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+		<script th:src="@{/assets/inputmask/jquery.inputmask.min.js}"></script>
+		
+		<script>
+		    $(":input").inputmask();
+		</script>
 	</body>
 </html>
