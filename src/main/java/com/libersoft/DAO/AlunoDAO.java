@@ -7,5 +7,6 @@ import com.libersoft.Model.Aluno;
 
 @Repository
 public interface AlunoDAO extends JpaRepository<Aluno, Integer>{
-
+	boolean existsByEmail(String email);
+	boolean existsByCpf(String cpf);
 }
