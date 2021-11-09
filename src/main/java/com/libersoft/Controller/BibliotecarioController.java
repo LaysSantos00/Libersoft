@@ -27,12 +27,12 @@ public class BibliotecarioController {
 		return "listarBibliotecarios";
 	}
 
-	@GetMapping("/adm/exibirFormBibliotecario")
+	@GetMapping("/adm/cadastroBibliotecario")
 	public String exibirFormBibliotecario(Bibliotecario bibliotecario) {
 		return "formBibliotecario";
 	}
 
-	@PostMapping("/adm/cadastrarBibliotecario")
+	@PostMapping("/adm/cadastroBibliotecario")
 	public String cadastrarBibliotecario(Bibliotecario bibliotecario) {
 		System.out.println(bibliotecario.getNome());
 		this.bibliotecarioDAO.save(bibliotecario);
