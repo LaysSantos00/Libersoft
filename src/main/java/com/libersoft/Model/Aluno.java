@@ -5,22 +5,35 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Aluno {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idAluno;
+	
+	@Size(min=7, max=100)
 	@Column(length = 100, nullable = false)
 	private String nome;
+	
+	@Email
+	@Size(min=7, max=100)
 	@Column(length = 100, nullable = false)
 	private String email;
+	
+	@Size(min=8, max=100)
 	@Column(length = 20, nullable = false)
 	private String senha;
+	
 	@Column(length = 11, nullable = false)
 	private String telefone;
+	
+	@Size(min=8, max=70)
 	@Column(length = 70, nullable = false)
 	private String endereco;
+
 	@Column(length = 11, nullable = false)
 	private String cpf;
 
