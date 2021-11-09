@@ -16,7 +16,7 @@
 				<label class="subtitulo">Insira as informações do novo bibliotecário.</label><hr/>				
 			</div>
 			
-			<form class="form" action="/adm/cadastrarBibliotecario" method="post" th:object="${bibliotecario}">
+			<form class="form" action="/adm/cadastroBibliotecario" method="post" th:object="${bibliotecario}">
 				<input type="hidden" th:field="*{idBibliotecario}"/>
 				<input type="text" autocomplete="off" th:field="*{nome}" class="inputText" placeholder="Nome Completo">
 				<input type="text" data-inputmask="'alias': 'email'" autocomplete="off" th:field="*{email}" class="inputText" placeholder="Email">
@@ -28,7 +28,7 @@
 				<input type="submit" class="mainbtn button1" value="Cadastre">
 			</form>
 
-			<a href="/adm/listarBibliotecarios"><button class="mainbtn button1">Lista Bibliotecários</button></a>
+			<a href="/adm/cadastroBibliotecario"><button class="mainbtn button1">Lista Bibliotecários</button></a>
 		</div>
 		
 		<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
