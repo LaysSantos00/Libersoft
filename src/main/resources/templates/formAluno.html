@@ -46,11 +46,11 @@
 				</div>
 				
 				<input type="text" th:field="*{nome}" class="inputText" placeholder="Nome Completo">
-				<input type="text" data-inputmask="'alias': 'email'" autocomplete="off" th:field="*{email}" class="inputText" placeholder="Email">
+				<input type="text" th:field="*{email}" class="inputText" placeholder="Email"  data-inputmask="'alias': 'email'">
 				<input type="text" th:field="*{senha}" class="inputText" placeholder="Senha">
-				<input type="text" data-inputmask="'mask': '(99) 9 9999 9999'" th:field="*{telefone}" class="inputText" placeholder="Telefone">
+				<input type="text" th:field="*{telefone}" class="inputText" placeholder="Telefone" data-inputmask="'mask': '(99) 9 9999 9999'">
 				<input type="text" th:field="*{endereco}" class="inputText" placeholder="Endereço">
-				<input type="text" data-inputmask="'mask': '999.999.999-99'" autocomplete="off" th:field="*{cpf}" class="inputText" placeholder="CPF">
+				<input type="text" th:field="*{cpf}" class="inputText" placeholder="CPF" data-inputmask="'mask': '999.999.999-99'">
 				
 				<input type="submit" class="mainbtn button1" value="Cadastre">
 			</form>
