@@ -249,9 +249,13 @@
 	}
 	
 	.livro {
-		height: 12vw;
-		width: auto;
-	}
+	    float: left;
+	    width:  12vw;
+	    height: 11vw;
+	    padding: 1vw 0;
+	    object-fit: scale-down;
+	    background-color: rgba(255, 255, 255, 0.2);
+}
 	
 	.tituloLivro {
 		font-size: 2.3vh;
@@ -265,6 +269,7 @@
 	
 	.descricaoLivro {
 		font-size: 2vh;
+  		word-break: break-word;
 	}
 	
 	.quantidadeLivro {

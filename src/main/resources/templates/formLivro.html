@@ -19,12 +19,18 @@
 			<form class="form" action="/bibliotecario/cadastrarLivro" method="post" th:object="${livro}">
 				<input type="hidden" th:field="*{idLivro}"/>
 				<input type="text" th:field="*{titulo}" class="inputText" placeholder="Título">
+				<select th:field="*{imagem}" class="inputText">
+					<option th:value="'/img/livro/padrao.jpg'" th:text="'Escolha a imagem...'" th:selected="true"></option>
+				 	<option th:value="'/img/livro/codigo_limpo.jpg'" th:text="'Código Limpo'"></option>
+				 	<option th:value="'/img/livro/sistemas_operacionais_modernos.jpg'" th:text="'Sistemas Operacionais Modernos'"></option>
+				 	<option th:value="'/img/livro/padrao.jpg'" th:text="'Sem imagem'"></option>
+				</select>
 				<input type="text" th:field="*{autor}" class="inputText" placeholder="Autor">
 				<input type="text" th:field="*{categoria}" class="inputText" placeholder="Categoria">
 				<label for="volume">Volume:</label>
-				<input type="text" name="volume" th:field="*{volume}" class="inputText" placeholder="Volume">
+				<input type="number" name="volume" th:field="*{volume}" class="inputText" placeholder="Volume">
 				<label for="quantidade">Quantidade:</label>
-				<input type="text" name="quantidade" th:field="*{quantidade}" class="inputText" placeholder="Quantidade">
+				<input type="number" name="quantidade" th:field="*{quantidade}" class="inputText" placeholder="Quantidade">
 				<!--<input type="text" th:field="*{resumo}" class="inputText" placeholder="Resumo">-->
 				<textarea style="resize: vertical;" rows = "1" cols = "1" th:field="*{resumo}" class="inputText" placeholder="Resumo"/>
 				
