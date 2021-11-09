@@ -18,11 +18,34 @@
 			
 			<form class="form" action="/adm/cadastroBibliotecario" method="post" th:object="${bibliotecario}">
 				<input type="hidden" th:field="*{idBibliotecario}"/>
-				<input type="text" autocomplete="off" th:field="*{nome}" class="inputText" placeholder="Nome Completo">
-				<input type="text" data-inputmask="'alias': 'email'" autocomplete="off" th:field="*{email}" class="inputText" placeholder="Email">
-				<input type="text" autocomplete="off" th:field="*{senha}" class="inputText" placeholder="Senha">
-				<input type="text" data-inputmask="'mask': '(99) 9 9999 9999'" th:field="*{telefone}" class="inputText" placeholder="Telefone">
-				<input type="text" data-inputmask="'mask': '999.999.999-99'" autocomplete="off" th:field="*{cpf}" class="inputText" placeholder="CPF">
+				
+				<div th:if="${#fields.hasErrors()}" class="erros">
+					<span th:if="${#fields.hasErrors('nome')}">Nome inválido:</span>
+					<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"/>
+					<span th:if="${#fields.hasErrors('nome')}"><br/></span>
+					
+					<span th:if="${#fields.hasErrors('email')}">Email inválido:</span>
+					<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"/>
+					<span th:if="${#fields.hasErrors('email')}"><br/></span>
+					
+					<span th:if="${#fields.hasErrors('senha')}">Senha inválida:</span>
+					<span th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"/>
+					<span th:if="${#fields.hasErrors('senha')}"><br/></span>
+					
+					<span th:if="${#fields.hasErrors('telefone')}">Telefone inválido:</span>
+					<span th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"/>
+					<span th:if="${#fields.hasErrors('telefone')}"><br/></span>
+					
+					<span th:if="${#fields.hasErrors('cpf')}">CPF inválido:</span>
+					<span th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"/>
+					<span th:if="${#fields.hasErrors('cpf')}"><br/></span>
+				</div>
+				
+				<input type="text" th:field="*{nome}" class="inputText" placeholder="Nome Completo">
+				<input type="text" th:field="*{email}" class="inputText" placeholder="Email" data-inputmask="'alias': 'email'">
+				<input type="text" th:field="*{senha}" class="inputText" placeholder="Senha">
+				<input type="text" th:field="*{telefone}" class="inputText" placeholder="Telefone" data-inputmask="'mask': '(99) 9 9999 9999'">
+				<input type="text" th:field="*{cpf}" class="inputText" placeholder="CPF" data-inputmask="'mask': '999.999.999-99'" >
 				
 				
 				<input type="submit" class="mainbtn button1" value="Cadastre">
