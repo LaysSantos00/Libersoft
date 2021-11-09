@@ -91,6 +91,14 @@ label {
 	color: #606770;
 	font-size: 2vh;
 }
+
+.erros {
+	background-color: lightcoral;
+	border: 1px solid red;
+	color: white;
+	padding: 1vh;
+	border-radius: 5px;
+}
 /* CONFIGURA��ES DO TEXTO DO TOPO */
 
 /* CONFIGURA��ES DOS INPUTS */

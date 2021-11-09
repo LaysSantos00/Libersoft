@@ -16,8 +16,35 @@
 				<label class="subtitulo">Insira as informações do novo usuário.</label><hr/>				
 			</div>
 			
-			<form class="form" action="/bibliotecario/cadastrarAluno" method="post" th:object="${aluno}">
+			<form class="form" action="/bibliotecario/cadastroAluno" method="post" th:object="${aluno}">
 				<input type="hidden" th:field="*{idAluno}"/>
+				
+				<div th:if="${#fields.hasErrors()}" class="erros">
+					<span th:if="${#fields.hasErrors('nome')}">Nome inválido:</span>
+					<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"/>
+					<span th:if="${#fields.hasErrors('nome')}"><br/></span>
+					
+					<span th:if="${#fields.hasErrors('email')}">Email inválido:</span>
+					<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"/>
+					<span th:if="${#fields.hasErrors('email')}"><br/></span>
+					
+					<span th:if="${#fields.hasErrors('senha')}">Senha inválida:</span>
+					<span th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"/>
+					<span th:if="${#fields.hasErrors('senha')}"><br/></span>
+					
+					<span th:if="${#fields.hasErrors('telefone')}">Telefone inválido:</span>
+					<span th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"/>
+					<span th:if="${#fields.hasErrors('telefone')}"><br/></span>
+					
+					<span th:if="${#fields.hasErrors('endereco')}">Endereço inválido:</span>
+					<span th:if="${#fields.hasErrors('endereco')}" th:errors="*{endereco}"/>
+					<span th:if="${#fields.hasErrors('endereco')}"><br/></span>
+					
+					<span th:if="${#fields.hasErrors('cpf')}">CPF inválido:</span>
+					<span th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"/>
+					<span th:if="${#fields.hasErrors('cpf')}"><br/></span>
+				</div>
+				
 				<input type="text" th:field="*{nome}" class="inputText" placeholder="Nome Completo">
 				<input type="text" data-inputmask="'alias': 'email'" autocomplete="off" th:field="*{email}" class="inputText" placeholder="Email">
 				<input type="text" th:field="*{senha}" class="inputText" placeholder="Senha">
