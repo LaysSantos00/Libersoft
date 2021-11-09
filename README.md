@@ -7,10 +7,14 @@ Esse projeto, feito por 6 estudantes, é o trabalho de conclusão de curso deles
 ##### Back-end:
 - Java
 - Spring Boot + MVC
-- MySQL
 - JPA
 ##### Front-end:
-- HTML + CSS + Thymeleaf
+- HTML + CSS
+- Thymeleaf
+- jQuery (https://robinherbots.github.io/Inputmask/)
+
+##### Banco de Dados:
+- MySQL
 
 ## Equipe:
 - Álvaro Dias \
