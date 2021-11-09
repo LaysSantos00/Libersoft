@@ -11,16 +11,25 @@ public class Livro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idLivro;
+	
 	@Column(length = 100, nullable = false)
 	private String categoria;
+	
 	@Column(length = 100, nullable = false)
 	private String titulo;
+	
 	private int volume;
+	
 	@Column(length = 100, nullable = false)
 	private String autor;
+	
 	private int quantidade;
+	
 	@Column(length = 200, nullable = false)
 	private String resumo;
+	
+	@Column(length = 100, nullable = false)
+	private String imagem;
 
 	public Livro() {
 
@@ -31,7 +40,7 @@ public class Livro {
 	}
 
 	public Livro(Integer idLivro, String categoria, String titulo, int volume, String autor, int quantidade,
-			String resumo) {
+			String resumo, String imagem) {
 		super();
 		this.idLivro = idLivro;
 		this.categoria = categoria;
@@ -40,6 +49,7 @@ public class Livro {
 		this.autor = autor;
 		this.quantidade = quantidade;
 		this.resumo = resumo;
+		this.imagem = imagem;
 	}
 
 	public Integer getIdLivro() {
@@ -98,4 +108,12 @@ public class Livro {
 		this.resumo = resumo;
 	}
 
+	
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
 }
