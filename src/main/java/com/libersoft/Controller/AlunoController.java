@@ -2,18 +2,23 @@ package com.libersoft.Controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.libersoft.DAO.AlunoDAO;
 import com.libersoft.Model.Aluno;
+import com.libersoft.Service.AlunoValidationService;
 
 @Controller
-public class AlunoController {
+public class AlunoController {	
 	@Autowired
 	private AlunoDAO alunoDAO;
 
@@ -27,55 +32,55 @@ public class AlunoController {
 		return "listarAlunos";
 	}
 	
-	@GetMapping("/bibliotecario/exibirFormAluno")
+	@GetMapping("/bibliotecario/cadastroAluno")
 	public String exibirFormAluno(Aluno aluno) {
 		return "formAluno";
 	}
 
-	@PostMapping("/bibliotecario/cadastrarAluno")
-	public String cadastrarAluno(Aluno aluno) {
+	@PostMapping("/bibliotecario/cadastroAluno")
+	public String cadastrarAluno(@Valid Aluno aluno, BindingResult result) {
 		
-		// VALIDAÇÕES TESTE //
-		if (
-				aluno.getNome() == "" || 
-				aluno.getEmail() == "" || 
-				aluno.getSenha() == "" ||
-				aluno.getTelefone() == "" || 
-				aluno.getEndereco() == "" || 
-				aluno.getCpf() == ""
-				) {
-			System.out.println("campo nulo");
-			return "formAluno";
-		} else if (
-				aluno.getNome().length() < 3 ||
-				aluno.getEmail().length() < 13 ||
-				aluno.getSenha().length() < 8 ||
-				aluno.getTelefone().length() < 10 ||
-				aluno.getEndereco().length() < 8 ||
-				aluno.getCpf().length() != 11
-				) {
-			System.out.println("tamanho pequeno");
-			return "formAluno";
-		} else if (
-				aluno.getNome().length() > 100 ||
-				aluno.getEmail().length() > 100 ||
-				aluno.getSenha().length() > 20 ||
-				aluno.getTelefone().length() > 11 ||
-				aluno.getEndereco().length() > 70 ||
-				aluno.getCpf().length() > 11
-				) {
-			System.out.println("tamanho grande");
-			return "formAluno";
-		} else {
-			this.alunoDAO.save(aluno);
-			return "listarAlunos";
+		/* FAZENDO A LIGAÇÃO COM O SERVICE DE VALIDAÇÃO
+		 * DOS CAMPOS DO USUÁRIO */
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+		context.scan("com.libersoft.Service");
+		context.refresh();
+		AlunoValidationService alunoService = context.getBean(AlunoValidationService.class);
+		context.close();
+		
+		/* FORMATANDO AS STRINGS DE TELEFONE E CPF
+		 * PARA FICAR APENAS NÚMEROS DENTRO DA STRING */
+		aluno.setTelefone(aluno.getTelefone().replace("(", "").replace(")", "").replace(" ", "").replace("_", ""));
+		aluno.setCpf(aluno.getCpf().replace(".", "").replace("-", "").replace("_", ""));
+		
+		String erros = alunoService.validarAluno(aluno);
+		
+		/* CONFERE SE OS CAMPOS DO TIPO ÚNICO JÁ
+		 * EXISTEM CADASTRADOS NO BANCO DE DADOS */
+		if (alunoDAO.existsByEmail(aluno.getEmail())) {
+			erros += "email$aluno$email já cadastrado$";
 		}
-		// VALIDAÇÕES TESTE //
+		if (alunoDAO.existsByCpf(aluno.getCpf())) {
+			erros += "cpf$aluno$cpf já cadastrado$";	
+		}
 		
-		/* SE NÃO FOR USAR ESSAS VALIDAÇÕES ACIMA, DESCOMENTAR ABAIXO E RETIRAR AS VALIDAÇÕES
+		/* TRATANDO OS ERROS PARA REGISTRAR ELES NO
+		 * OBJETO 'RESULT', QUE ARMAZENA TODOS OS ERROS
+		 * DOS CAMPOS DE CADASTRO */
+		if (!erros.isEmpty() ) {			
+			System.out.println(erros);
+			String[] listaErros = erros.split("\\$");
+			for (int i = 0; i < listaErros.length; i += 3) {
+				result.rejectValue(listaErros[i], listaErros[i + 1], listaErros[i + 2]);
+			}
+		}
+		
+		if (result.hasErrors()){
+			return "formAluno";
+		}
+		
 		this.alunoDAO.save(aluno);
-		return "listarAlunos"; 
-		 */
+		return "listarAlunos";
 	}
 
 	@GetMapping("/bibliotecario/editarAluno")
