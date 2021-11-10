@@ -2,9 +2,12 @@ package com.libersoft.Controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,29 +30,49 @@ public class LivroController {
 		return "listarLivros";
 	}
 	
-	@GetMapping("/bibliotecario/exibirFormLivro")
+	@GetMapping("/bibliotecario/cadastroLivro")
 	public String exibirFormLivro(Livro livro) {
-		return "formLivro";
+		return "cadastroLivro";
 	}
 
-	@PostMapping("/bibliotecario/cadastrarLivro")
-	public String cadastrarLivro(Livro livro) {
-		System.out.println(livro.getTitulo());
+	@PostMapping("/bibliotecario/cadastroLivro")
+	public String cadastrarLivro(@Valid Livro livro, BindingResult result) {
+		
+		if (result.hasErrors()) {
+			return "cadastroLivro";
+		}
+		
 		this.livroDAO.save(livro);
-		return "listarLivros";
+		return "redirect:listarLivros";
+		
 	}
 
 	@GetMapping("/bibliotecario/editarLivro")
-	public String editarLivro(Integer idLivro, Model model) {
+	public String getEditarLivro(Integer idLivro, Model model) {
 		Livro liv = this.livroDAO.getById(idLivro);
 		model.addAttribute("livro", liv);
-		return "formLivro";
+		
+		return "editarLivro";
+	}
+	
+	@PostMapping("/bibliotecario/editarLivro")
+	public String postEditarLivro(@Valid Livro livro, BindingResult result) {
+		
+		if (result.hasErrors()) {
+			return "editarLivro";
+		}
+		
+		this.livroDAO.save(livro);
+		return "redirect:listarLivros";
+		
 	}
 
 	@GetMapping("/bibliotecario/excluirLivro")
 	public String excluirLivro(Integer idLivro) {
-		this.livroDAO.deleteById(idLivro);
-		return "listarLivros";
+		if (!(idLivro == null)) {
+			this.livroDAO.deleteById(idLivro);
+		}
+		return "redirect:listarLivros";
 	}
 
 }

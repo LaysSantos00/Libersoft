@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Livro {
@@ -12,22 +15,31 @@ public class Livro {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idLivro;
 	
-	@Column(length = 100, nullable = false)
+	@Size(min=1, max=50)
+	@Column(length = 50, nullable = false)
 	private String categoria;
 	
-	@Column(length = 100, nullable = false)
+	@Size(min=1, max=50)
+	@Column(length = 50, nullable = false)
 	private String titulo;
 	
+	@Min(1)
+	@Max(100)
 	private int volume;
 	
-	@Column(length = 100, nullable = false)
+	@Size(min=2, max=60)
+	@Column(length = 60, nullable = false)
 	private String autor;
 	
+	@Min(0)
+	@Max(30000)
 	private int quantidade;
 	
-	@Column(length = 200, nullable = false)
+	@Size(min=10, max=500)
+	@Column(length = 500, nullable = false)
 	private String resumo;
 	
+	@Size(min=3, max=100, message="escolha uma imagem")
 	@Column(length = 100, nullable = false)
 	private String imagem;
 
