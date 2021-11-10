@@ -1,42 +1,70 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>Listar alunos</title>
-<link rel="stylesheet" type="text/css" href="style.min.css" />
-</head>
-<body>
-<h2>Todos os livros cadastrados</h2>
-	<table style="height: 100%;width: 100%" border="1">
-		<tr align="center">
-			<th scope="row">&nbsp;Titulo&nbsp;</th>
-			<th>&nbsp;Autor&nbsp;</th>
-			<th>&nbsp;Categoria&nbsp;</th>
-			<th>&nbsp;Volume&nbsp;</th>
-			<th>&nbsp;Quantidade&nbsp;</th>
-			<th>&nbsp;Resumo&nbsp;</th>
-			<th>&nbsp;Opções&nbsp;</th>
-		</tr>
-		<tr th:each="livr : ${livros}">
-			<td th:text="${livr.titulo}"></td>
-			<td th:text="${livr.autor}"></td>
-			<td th:text="${livr.categoria}"></td>
-			<td th:text="${livr.volume}"></td>
-			<td th:text="${livr.quantidade}"></td>
-			<td th:text="${livr.resumo}"></td>
-			<td>
-				<a th:href="@{/bibliotecario/editarLivro(idLivro=${livr.idLivro})}"><button >Editar</button></a>&nbsp;&nbsp;
-				<a th:href="@{/bibliotecario/excluirLivro(idLivro=${livr.idLivro})}"><button >Remover</button> </a>
-			</td>
-		</tr>
-	</table>
-	<hr>
-	<div style="text-align: center">
-		<a href="/index"><button>Voltar</button></a>
-	</div>
-		<div style="text-align: center">
-		<a href="/bibliotecario/exibirFormAluno"><button>Inserir novo livro</button></a>
-	</div>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<title>Livros</title>
+		
+		<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
+		<link rel="stylesheet" href="/css/livros.css">
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="left-navbar">
+				<img src="/img/libersoft_logo_blue.svg" class="logo"/>
+				
+				<hr/>
+				
+				<a href="home.html" class="menuItem">
+				<img src="/img/pagina_inicial.svg" class="iconeItem"/> Página Inicial</a>
+				
+				<p class="menuItem menuSubtitulo">Bibliotecário</p>
+				
+				<a href="listarLivros" class="menuItem">
+				<img src="/img/livros.svg" class="iconeItem"/> Livros</a>
+				<a href="listarAlunos" class="menuItem">
+				<img src="/img/avatar_padrao.svg" class="iconeItem"/> Alunos</a>
+				
+				<p class="menuItem menuSubtitulo">Você</p>
+				
+				<a href="meuPerfil.html" class="menuItem">
+				<img src="/img/avatar_padrao.svg" class="iconeItem"/> Meu Perfil</a>
+				<a href="login.html" class="menuItem">
+				<img src="/img/sair.svg" class="iconeItem"/> Sair</a> 
+			</div>
+			
+			<div class="content">
+				<div class="barraDePesquisa">
+					<input type="search" name="q" class="inputSearch" placeholder="Procurar por livros...">
+					<button class="mainbtn button2">Pesquisar</button>
+				</div>
+				
+				<div class="estruturaPrincipal">
+					<p>
+					Livros
+					<a href="/bibliotecario/exibirFormLivro"><button class="sidebtn goldbtn p07vh">Inserir novo livro</button ></a>
+					</p>
+					<div class="livros">
+						<div th:each="livr : ${livros}" class="estruturaLivro">
+							<div class="livroPlaceholder">
+								<img th:src="${livr.imagem}" class="livro"/>
+							</div>
+							<div class="informacoes">
+								<div class="parteSuperior">
+									<p class="tituloLivro" th:text="|${livr.titulo} - Volume: ${livr.volume}|"/>
+									<p class="subtituloLivro" th:text="|${livr.autor} - ${livr.categoria}|"/>
+									<p class="descricaoLivro" th:text="${livr.resumo}"/>
+								</div>
+								<div class="parteInferior">
+									<p class="quantidadeLivro" th:text="|Quantidade disponível: ${livr.quantidade}|"/>
+									<a th:href="@{/bibliotecario/editarLivro(idLivro=${livr.idLivro})}"><button class="sidebtn goldbtn p07vh">Editar</button> </a>
+									<a th:href="@{/bibliotecario/excluirLivro(idLivro=${livr.idLivro})}"><button class="sidebtn redbtn p07vh">Remover</button> </a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body >
 </html>

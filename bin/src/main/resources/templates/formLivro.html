@@ -1,61 +1,43 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>Cadastro de livros</title>
-</head>
-<body style="text-align: center">
-	<h2>Cadastro de livros</h2>
-	<form action="/bibliotecario/cadastrarLivro" method="post"
-		th:object="${livro}">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width">
+		
+		<title>Cadastro de Livros</title>
+		<link rel="stylesheet" type="text/css" href="/css/cadastro.css">
+	</head>
+	<body>
+		<div class="wrapper">		
+			<div class="cadastroTopo">
+				<label class="titulo">Cadastro</label><br/>
+				<label class="subtitulo">Insira as informações do novo livro.</label><hr/>				
+			</div>
+			
+			<form class="form" action="/bibliotecario/cadastrarLivro" method="post" th:object="${livro}">
+				<input type="hidden" th:field="*{idLivro}"/>
+				<input type="text" th:field="*{titulo}" class="inputText" placeholder="Título">
+				<select th:field="*{imagem}" class="inputText">
+					<option th:value="'/img/livro/padrao.jpg'" th:text="'Escolha a imagem...'" th:selected="true"></option>
+				 	<option th:value="'/img/livro/codigo_limpo.jpg'" th:text="'Código Limpo'"></option>
+				 	<option th:value="'/img/livro/sistemas_operacionais_modernos.jpg'" th:text="'Sistemas Operacionais Modernos'"></option>
+				 	<option th:value="'/img/livro/padrao.jpg'" th:text="'Sem imagem'"></option>
+				</select>
+				<input type="text" th:field="*{autor}" class="inputText" placeholder="Autor">
+				<input type="text" th:field="*{categoria}" class="inputText" placeholder="Categoria">
+				<label for="volume">Volume:</label>
+				<input type="number" name="volume" th:field="*{volume}" class="inputText" placeholder="Volume">
+				<label for="quantidade">Quantidade:</label>
+				<input type="number" name="quantidade" th:field="*{quantidade}" class="inputText" placeholder="Quantidade">
+				<!--<input type="text" th:field="*{resumo}" class="inputText" placeholder="Resumo">-->
+				<textarea style="resize: vertical;" rows = "1" cols = "1" th:field="*{resumo}" class="inputText" placeholder="Resumo"/>
+				
+				<input type="submit" class="mainbtn button1" value="Cadastre">
+			</form>
 
-		<input type="hidden" th:field="*{idLivro}" />
-		<div>
-			<label for="titulo">Titulo</label> <input type="text"
-				th:field="*{titulo}" />
+			<a href="/bibliotecario/listarLivros"><button class="mainbtn button1">Lista Livros</button></a>
 		</div>
-		<br>
-		<br>
-		<div>
-			<label for="autor">Autor</label> <input type="text"
-				th:field="*{autor}" />
-		</div>
-		<br>
-		<br>
-		<div>
-			<label for="categoria">Categoria</label> <input type="text"
-				th:field="*{categoria}" />
-		</div>
-		<br>
-		<br>
-		<div>
-			<label for="volume">Volume</label> <input type="number"
-				th:field="*{volume}" />
-		</div>
-		<br>
-		<br>
-		<div>
-			<label for="quantidade">Quantidade</label> <input type="number"
-				th:field="*{quantidade}" />
-		</div>
-		<br>
-		<br>
-		<div>
-			<label for="resumo">Resumo</label> <input type="text"
-				th:field="*{resumo}" />
-		</div>
-		<br>
-		<br>
-		<div>
-			<button type="submit">Adicionar</button>
-		</div>
-		<br>
-		<br>
-	</form>
-	<div style="text-align: center">
-		<a href="/bibliotecario/listarLivros"><button>Ir p lista
-				de livros</button></a>
-	</div>
-</body>
+	</body>
 </html>
