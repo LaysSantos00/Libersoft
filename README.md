@@ -11,8 +11,7 @@ Esse projeto, feito por 6 estudantes, é o trabalho de conclusão de curso deles
 ##### Front-end:
 - HTML + CSS
 - Thymeleaf
-- jQuery 
-- Inputmask (https://robinherbots.github.io/Inputmask/)
+- jQuery + (https://robinherbots.github.io/Inputmask/)
 
 ##### Banco de Dados:
 - MySQL
