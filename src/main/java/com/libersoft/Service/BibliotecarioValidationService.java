@@ -9,7 +9,7 @@ import com.libersoft.Model.Bibliotecario;
 @Service
 public class BibliotecarioValidationService {
 	public String validarBibliotecario(Bibliotecario bibliotecario) {
-		String mensagem = "";
+		String mensagem = ""; // PADRÃO: 'campo$tabela$erro$';
 		
 		String nome = bibliotecario.getNome();
 		String email = bibliotecario.getEmail();
@@ -17,17 +17,11 @@ public class BibliotecarioValidationService {
 		String telefone = bibliotecario.getTelefone();
 		String cpf = bibliotecario.getCpf();
 		
-		if (cpf.length() != 11) {
-			mensagem += "cpf$bibliotecario$precisa conter 11 dígitos$";
-		}
-		
-		if (telefone.length() != 11) {
-			mensagem += "telefone$bibliotecario$precisa conter 11 dígitos$";
-		}
-		
-		if (Pattern.matches("/^[^\\\\s@]+@[^\\\\s@]+\\\\.[^\\\\s@]+$/", email)) {
-			mensagem += "email$bibliotecario$formato aceito: [endereço]@[domínio].[extensão]$";
-		}
+		/*
+		 * 
+		 * DEIXANDO ESSE SERVICE CASO PRECISE SER USADO
+		 * 
+		 */
 		
 		return mensagem;
 	}
