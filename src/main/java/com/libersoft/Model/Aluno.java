@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 public class Aluno {
@@ -19,7 +20,6 @@ public class Aluno {
 	private String nome;
 	
 	@Email
-	@Size(min=7, max=100)
 	@Column(length = 100, nullable = false)
 	private String email;
 	
@@ -34,6 +34,7 @@ public class Aluno {
 	@Column(length = 70, nullable = false)
 	private String endereco;
 
+	@CPF
 	@Column(length = 11, nullable = false)
 	private String cpf;
 
