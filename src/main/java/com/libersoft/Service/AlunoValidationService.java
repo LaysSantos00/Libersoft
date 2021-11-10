@@ -18,12 +18,20 @@ public class AlunoValidationService {
 		String endereco = aluno.getEndereco();
 		String cpf = aluno.getCpf();
 		
-		/*
-		 * 
-		 * DEIXANDO ESSE SERVICE CASO PRECISE SER USADO
-		 * 
-		 */
+		if (nome.replace(" ", "").length() < 7) {
+			mensagem += "nome$aluno$poucos caracteres$";
+		}
+		
+		if (!Pattern.matches("^[a-zA-Z0-9 ]*$", nome)) {
+			mensagem += "nome$aluno$apenas é aceito letras, números e espaços$";
+		}
+		
+		if (telefone.length() != 11) {
+			mensagem += "telefone$aluno$precisa conter 11 dígitos$";
+		}
 		
 		return mensagem;
 	}
+	
+	
 }

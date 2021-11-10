@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 @Entity
 public class Bibliotecario {
 	@Id
@@ -19,7 +21,6 @@ public class Bibliotecario {
 	private String nome;
 	
 	@Email
-	@Size(min=7, max=100)
 	@Column(length = 50, nullable = false)
 	private String email;
 	
@@ -30,6 +31,7 @@ public class Bibliotecario {
 	@Column(length = 11, nullable = false)
 	private String telefone;
 	
+	@CPF
 	@Column(length = 11, nullable = false)
 	private String cpf;
 

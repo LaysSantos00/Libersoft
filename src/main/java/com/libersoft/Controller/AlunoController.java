@@ -64,14 +64,13 @@ public class AlunoController {
 			erros += "email$aluno$email já cadastrado$";
 		}
 		if (alunoDAO.existsByCpf(aluno.getCpf())) {
-			erros += "cpf$aluno$cpf já cadastrado$";	
+			erros += "cpf$aluno$CPF já cadastrado$";	
 		}
 		
 		/* TRATANDO OS ERROS PARA REGISTRAR ELES NO
 		 * OBJETO 'RESULT', QUE ARMAZENA TODOS OS ERROS
 		 * DOS CAMPOS DE CADASTRO */
-		if (!erros.isEmpty() ) {			
-			System.out.println(erros);
+		if (!erros.isEmpty() ) {
 			String[] listaErros = erros.split("\\$");
 			for (int i = 0; i < listaErros.length; i += 3) {
 				result.rejectValue(listaErros[i], listaErros[i + 1], listaErros[i + 2]);
@@ -93,7 +92,6 @@ public class AlunoController {
 		
 		oldEmail = alu.getEmail();
 		oldCpf = alu.getCpf();
-		System.out.println("cpf cadastrado:" + oldCpf);
 		
 		return "editarAluno";
 	}

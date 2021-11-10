@@ -17,12 +17,20 @@ public class BibliotecarioValidationService {
 		String telefone = bibliotecario.getTelefone();
 		String cpf = bibliotecario.getCpf();
 		
-		/*
-		 * 
-		 * DEIXANDO ESSE SERVICE CASO PRECISE SER USADO
-		 * 
-		 */
+		if (nome.replace(" ", "").length() < 7) {
+			mensagem += "nome$bibliotecario$poucos caracteres$";
+		}
+		
+		if (!Pattern.matches("^[a-zA-Z0-9 ]*$", nome)) {
+			mensagem += "nome$bibliotecario$apenas é aceito letras, números e espaços$";
+		}
+		
+		if (telefone.length() != 11) {
+			mensagem += "telefone$bibliotecario$precisa conter 11 dígitos$";
+		}
 		
 		return mensagem;
 	}
+	
+	
 }
