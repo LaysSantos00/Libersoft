@@ -6,7 +6,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width">
 		
-		<title>Cadastro de Bibliotecários</title>
+		<title>Edição de Bibliotecários</title>
 		
 		<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
 		<link rel="stylesheet" type="text/css" href="/css/cadastro.css">
@@ -14,11 +14,11 @@
 	<body>
 		<div class="wrapper">		
 			<div class="cadastroTopo">
-				<label class="titulo">Cadastrar Bibliotecários</label><br/>
-				<label class="subtitulo">Insira as informações do novo bibliotecário.</label><hr/>				
+				<label class="titulo">Editar</label><br/>
+				<label class="subtitulo">Editar as informações do bibliotecário.</label><hr/>				
 			</div>
 			
-			<form class="form" action="/adm/cadastroBibliotecario" method="post" th:object="${bibliotecario}">
+			<form class="form" action="/adm/editarBibliotecario" method="post" th:object="${bibliotecario}">
 				<input type="hidden" th:field="*{idBibliotecario}"/>
 				
 				<div th:if="${#fields.hasErrors()}" class="erros">

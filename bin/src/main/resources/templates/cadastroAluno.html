@@ -6,7 +6,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width">
 		
-		<title>Cadastro de Bibliotecários</title>
+		<title>Cadastro de Alunos</title>
 		
 		<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
 		<link rel="stylesheet" type="text/css" href="/css/cadastro.css">
@@ -14,12 +14,12 @@
 	<body>
 		<div class="wrapper">		
 			<div class="cadastroTopo">
-				<label class="titulo">Cadastrar Bibliotecários</label><br/>
-				<label class="subtitulo">Insira as informações do novo bibliotecário.</label><hr/>				
+				<label class="titulo">Cadastro</label><br/>
+				<label class="subtitulo">Insira as informações do novo usuário.</label><hr/>				
 			</div>
 			
-			<form class="form" action="/adm/cadastroBibliotecario" method="post" th:object="${bibliotecario}">
-				<input type="hidden" th:field="*{idBibliotecario}"/>
+			<form class="form" action="/bibliotecario/cadastroAluno" method="post" th:object="${aluno}">
+				<input type="hidden" th:field="*{idAluno}"/>
 				
 				<div th:if="${#fields.hasErrors()}" class="erros">
 					<span th:if="${#fields.hasErrors('nome')}">Nome inválido:</span>
@@ -38,22 +38,26 @@
 					<span th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"/>
 					<span th:if="${#fields.hasErrors('telefone')}"><br/></span>
 					
+					<span th:if="${#fields.hasErrors('endereco')}">Endereço inválido:</span>
+					<span th:if="${#fields.hasErrors('endereco')}" th:errors="*{endereco}"/>
+					<span th:if="${#fields.hasErrors('endereco')}"><br/></span>
+					
 					<span th:if="${#fields.hasErrors('cpf')}">CPF inválido:</span>
 					<span th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"/>
 					<span th:if="${#fields.hasErrors('cpf')}"><br/></span>
 				</div>
 				
 				<input type="text" th:field="*{nome}" class="inputText" placeholder="Nome Completo">
-				<input type="text" th:field="*{email}" class="inputText" placeholder="Email" data-inputmask="'alias': 'email'">
+				<input type="text" th:field="*{email}" class="inputText" placeholder="Email"  data-inputmask="'alias': 'email'">
 				<input type="text" th:field="*{senha}" class="inputText" placeholder="Senha">
 				<input type="text" th:field="*{telefone}" class="inputText" placeholder="Telefone" data-inputmask="'mask': '(99) 9 9999 9999'">
-				<input type="text" th:field="*{cpf}" class="inputText" placeholder="CPF" data-inputmask="'mask': '999.999.999-99'" >
-				
+				<input type="text" th:field="*{endereco}" class="inputText" placeholder="Endereço">
+				<input type="text" th:field="*{cpf}" class="inputText" placeholder="CPF" data-inputmask="'mask': '999.999.999-99'">
 				
 				<input type="submit" class="mainbtn button1" value="Cadastre">
 			</form>
 
-			<a href="/adm/listarBibliotecarios"><button class="mainbtn button1">Lista Bibliotecários</button></a>
+			<a href="/bibliotecario/listarAlunos"><button class="mainbtn button1">Lista Alunos</button></a>
 		</div>
 		
 		<script th:src="@{/webjars/jquery/jquery.min.js}"></script>

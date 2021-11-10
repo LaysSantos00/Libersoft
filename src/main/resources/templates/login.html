@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+</head>
+<body style="text-align: center">
+
+<h2>Fazer login como bibliotecario</h2>
+	<div th:text="${mensagem}" th:if="${mensagem != null}"
+			style="color: red"></div>
+			
+		<form action="/fazerLogin" method="post" th:object="${bibliotecario}">
+
+			<input type="text" name="cpf" placeholder="cpf" required><br><br>
+
+			<input type="password" name="senha" placeholder="senha" required><br><br>
+				
+						<input type="submit" value="Login">				
+		</form>
+		<hr>
+			Não tem conta? <a href="/adm/cadastroBibliotecario"><button>Inscrever-se</button></a>
+</body>
+</html>
