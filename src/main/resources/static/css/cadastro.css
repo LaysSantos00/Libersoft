@@ -1,5 +1,5 @@
 
-/* CONFIGURAÇÕES GERAIS */
+/* CONFIGURACOES GERAIS */
 
 * {
 	font-family: 'Roboto-Regular', sans-serif;
@@ -52,9 +52,9 @@ label {
   background: #998350; 
 }
 
-/* CONFIGURA��ES GERAIS */
+/* CONFIGURACOES GERAIS */
 
-/* CONFIGURA��ES DO CONTE�DO */
+/* CONFIGURACOES DO CONTEUDO */
 
 .wrapper {
 	display: flex;
@@ -75,9 +75,9 @@ label {
 	align-items: stretch;
 }
 
-/* CONFIGURA��ES DO CONTE�DO */
+/* CONFIGURACOES DO CONTEUDO */
 
-/* CONFIGURA��ES DO TEXTO DO TOPO */
+/* CONFIGURACOES DO TEXTO DO TOPO */
 .cadastroTopo {
 	text-align: left;
 	width: 100%;
@@ -98,10 +98,12 @@ label {
 	color: white;
 	padding: 1vh;
 	border-radius: 5px;
+	font-size: 1.7vh;
 }
-/* CONFIGURA��ES DO TEXTO DO TOPO */
 
-/* CONFIGURA��ES DOS INPUTS */
+/* CONFIGURACOES DO TEXTO DO TOPO */
+
+/* CONFIGURACOES DOS INPUTS */
 .inputText {
 	font-size: 2.5vh;
 	padding: 1vh 2.5vh;
@@ -119,9 +121,9 @@ label {
 ::placeholder {
 	color: #8d949e !important;
 }
-/* CONFIGURA��ES DOS INPUTS */
+/* CONFIGURACOES DOS INPUTS */
 
-/* CONFIGURA��ES DOS BOT�ES */
+/* CONFIGURACOES DOS BOTOES */
 .mainbtn {
 	font-family: 'Roboto-Medium', sans-serif;
 	background-color: #013974;
@@ -145,7 +147,7 @@ label {
 .button1:active {
 	background-color: #012c59;
 }
-/* CONFIGURA��ES DOS BOT�ES */
+/* CONFIGURACOES DOS BOTOES */
 
 @media only screen and (min-width: 900px) {
 	.wrapper {
