@@ -8,7 +8,9 @@
 		font-size: 0.9vw;
 	}
 	
+	html,
 	body {
+		height: 100%;
 		background-color: #013974;
 	}
 	
@@ -49,6 +51,7 @@
 	.wrapper {
 		display: flex;
 		height: 100%;
+		overflow: hidden;
 	}
 	
 	.wrapper >*.left-navbar {
@@ -60,11 +63,15 @@
 	}
 	
 	.left-navbar {
+		overflow: scroll;
+		height: 100%;
 		padding: 1%;
 		background-color: white;
 	}
 	
 	.content {
+		overflow: scroll;
+		height: 100%;
 		padding: 1%;
 		background-color: #013974;
 	}
