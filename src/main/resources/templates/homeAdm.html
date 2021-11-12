@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Home</title>
+		
+		<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
+		<link rel="stylesheet" href="/css/livros.css">
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="left-navbar">
+				<img src="/img/libersoft_logo_blue.svg" class="logo"/>
+				
+				<hr/>
+				
+				<a href="/adm/home" class="menuItem">
+				<img src="/img/pagina_inicial.svg" class="iconeItem"/> Página Inicial</a>
+				
+				<p class="menuItem menuSubtitulo">Adm</p>
+				
+				
+				<a href="/adm/listarBibliotecarios" class="menuItem">
+				<img src="/img/avatar_padrao.svg" class="iconeItem"/> Bibliotecarios</a>
+				
+				<p class="menuItem menuSubtitulo">Você</p>
+				
+				<a href="meuPerfil.html" class="menuItem">
+				<img src="/img/avatar_padrao.svg" class="iconeItem"/> Meu Perfil</a>
+				<a href="/login" class="menuItem">
+				<img src="/img/sair.svg" class="iconeItem"/> Sair</a> 
+			</div>
+			
+			<div class="content">
+				<div class="barraDePesquisa">
+					<input type="search" name="q" class="inputSearch" placeholder="Procurar por livros...">
+					<button class="mainbtn button2">Pesquisar</button>
+				</div>
+				
+				
+			</div>
+		</div>
+	</body >
+</html>

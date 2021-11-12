@@ -1,38 +1,73 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>Listar bibliotecarios</title>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
-<link rel="stylesheet" type="text/css" href="style.min.css" />
+<head>
+	<meta charset="UTF-8">
+	<title>Bibliotecario</title>
+
+	<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
+	<link rel="stylesheet" href="/css/livros.css">
 </head>
+
 <body>
-<h2>Todos os bibliotecarios cadastrados</h2>
-	<table style="height: 100%;width: 100%" border="1">
-		<tr align="center">
-			<th scope="row">&nbsp;Nome&nbsp;</th>
-			<th>&nbsp;Email&nbsp;</th>
-			<th>&nbsp;Telefone&nbsp;</th>
-			<th>&nbsp;Opções&nbsp;</th>
-		</tr>
-		<tr th:each="bibli : ${bibliotecarios}">
-			<td th:text="${bibli.nome}"></td>
-			<td th:text="${bibli.email}"></td>
-			<td th:text="${bibli.telefone}"></td>
-			<td>
-				<a th:href="@{/adm/editarBibliotecario(idBibliotecario=${bibli.idBibliotecario})}"><button >Editar</button></a>&nbsp;&nbsp;
-				<a th:href="@{/adm/excluirBibliotecario(idBibliotecario=${bibli.idBibliotecario})}"><button >Remover</button> </a>
-			</td>
-		</tr>
-	</table>
-	<hr>
-	<div style="text-align: center">
-		<a href="/index"><button>Voltar</button></a>
-	</div>
-		<div style="text-align: center">
-		<a href="/adm/cadastroBibliotecario"><button>Inserir novo bibliotecario</button></a>
+	<div class="wrapper">
+		<div class="left-navbar">
+			<img src="/img/libersoft_logo_blue.svg" class="logo" />
+
+			<hr />
+
+			<a href="/adm/home" class="menuItem">
+				<img src="/img/pagina_inicial.svg" class="iconeItem" /> Página Inicial</a>
+
+			<p class="menuItem menuSubtitulo">Adm</p>
+
+
+			<a href="listarBibliotecarios" class="menuItem">
+				<img src="/img/avatar_padrao.svg" class="iconeItem" /> Bibliotecarios</a>
+
+			<p class="menuItem menuSubtitulo">Você</p>
+
+			<a href="meuPerfil.html" class="menuItem">
+				<img src="/img/avatar_padrao.svg" class="iconeItem" /> Meu Perfil</a>
+			<a href="/login" class="menuItem">
+				<img src="/img/sair.svg" class="iconeItem" /> Sair</a>
+		</div>
+
+		<div class="content">
+			<div class="barraDePesquisa">
+				<input type="search" name="q" class="inputSearch" placeholder="Procurar por livros...">
+				<button class="mainbtn button2">Pesquisar</button>
+			</div>
+
+			<div class="estruturaPrincipal">
+				<p>
+					Bibliotecarios
+					<a href="/adm/cadastroBibliotecario"><button class="sidebtn goldbtn p07vh">Inserir novo
+							bibliotecario</button></a>
+				</p>
+				<table style="height: 100%;width: 100%" border="1">
+					<tr align="center">
+						<th scope="row">&nbsp;Nome&nbsp;</th>
+						<th>&nbsp;Email&nbsp;</th>
+						<th>&nbsp;Telefone&nbsp;</th>
+						<th>&nbsp;Opções&nbsp;</th>
+					</tr>
+					<tr th:each="bibli : ${bibliotecarios}">
+						<td th:text="${bibli.nome}"></td>
+						<td th:text="${bibli.email}"></td>
+						<td th:text="${bibli.telefone}"></td>
+						<td>
+							<a
+								th:href="@{/adm/editarBibliotecario(idBibliotecario=${bibli.idBibliotecario})}"><button>Editar</button></a>&nbsp;&nbsp;
+							<a th:href="@{/adm/excluirBibliotecario(idBibliotecario=${bibli.idBibliotecario})}"><button>Remover</button>
+							</a>
+						</td>
+					</tr>
+				</table>
+
+			</div>
+		</div>
 	</div>
 </body>
+
 </html>

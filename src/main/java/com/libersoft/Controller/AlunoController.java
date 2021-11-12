@@ -39,6 +39,7 @@ public class AlunoController {
 	public String exibirFormAluno(Aluno aluno) {
 		return "cadastroAluno";
 	}
+	
 
 	@PostMapping("/bibliotecario/cadastroAluno")
 	public String cadastrarAluno(@Valid Aluno aluno, BindingResult result) {
@@ -161,5 +162,12 @@ public class AlunoController {
 		}
 		return "redirect:listarAlunos";
 	}
+	
+	// pagina para home do aluno
+		@GetMapping("/aluno/home")
+		public String homeAluno() {
+			return "homeAluno";
+		}
+	
 
 }

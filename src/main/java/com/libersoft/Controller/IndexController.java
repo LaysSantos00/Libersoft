@@ -10,4 +10,11 @@ public class IndexController {
 		return "index";
 	}
 
+	
+	
+	
+	//pagina para home do aluno
+
+
+	
 }

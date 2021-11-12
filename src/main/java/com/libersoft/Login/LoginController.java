@@ -20,7 +20,7 @@ public class LoginController {
 	@Autowired
 	private LivroDAO livroDAO;
 
-	@GetMapping("/")
+	@GetMapping("/login")
 	public String exibirLogin() {
 		return "login";
 	}
