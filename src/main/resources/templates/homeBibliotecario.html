@@ -3,8 +3,9 @@
 	xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
-		<title>Alunos</title>
+		<title>Home</title>
 		
+		<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
 		<link rel="stylesheet" href="/css/livros.css">
 	</head>
 	<body>
@@ -40,36 +41,7 @@
 					<button class="mainbtn button2">Pesquisar</button>
 				</div>
 				
-				<div class="estruturaPrincipal">
-					<p>
-					Alunos
-					<a href="/bibliotecario/cadastroAluno"><button class="sidebtn goldbtn p07vh">Inserir novo aluno</button ></a>
-					</p>
-				<table class="table" style="height: 100%;width: 100%" border="1">
-		<tr align="center">
-			<th scope="row">&nbsp;Nome&nbsp;</th>
-			<th>&nbsp;Email&nbsp;</th>
-			<th>&nbsp;Telefone&nbsp;</th>
-			<th>&nbsp;Endereço&nbsp;</th>
-			<th>&nbsp;CPF&nbsp;</th>
-			<th>&nbsp;&nbsp;</th>
-		</tr>
-		<tr th:each="alun : ${alunos}">
-			<td th:text="${alun.nome}"></td>
-			<td th:text="${alun.email}"></td>
-			<td th:text="${alun.telefone}"></td>
-			<td th:text="${alun.endereco}"></td>
-			<td th:text="${alun.cpf}"></td>
-			<td>
-				<a th:href="@{/bibliotecario/editarAluno(idAluno=${alun.idAluno})}"><button class="sidebtn goldbtn p07vh" >Editar</button ></a>&nbsp;&nbsp;
-				<a th:href="@{/bibliotecario/excluirAluno(idAluno=${alun.idAluno})}"><button class="sidebtn redbtn p07vh" >Remover</button > </a>
-			</td>
-		</tr>
-	</table>
-	<hr>
-	
-	
-				</div>
+				
 			</div>
 		</div>
 	</body >
