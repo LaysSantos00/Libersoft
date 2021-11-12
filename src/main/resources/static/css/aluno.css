@@ -1,0 +1,285 @@
+/* CONFIGURA��ES GERAIS */
+
+	* {
+		font-family: 'Roboto-Regular', sans-serif;
+		padding: 0;
+		margin: 0;
+		color: white;
+		font-size: 0.9vw;
+	}
+	
+	body {
+		background-color: #013974;
+	}
+	
+	p {
+		margin: 0;
+		padding: 0;
+		font-size: 1.5vw;
+	}
+	
+	a {
+		text-decoration: none;
+	}
+	
+	::-webkit-scrollbar {
+	  width: 10px;
+	}
+	
+	::-webkit-scrollbar-track {
+	  background-color: #fff;
+	}
+	
+	::-webkit-scrollbar-thumb {
+	  background: #b3995d; 
+	}
+	
+	::-webkit-scrollbar-thumb:hover {
+	  background: #a68e56; 
+	}
+	
+	::-webkit-scrollbar-thumb:active {
+	  background: #998350; 
+	}
+
+/* CONFIGURA��ES GERAIS */
+
+/* CONFIGURA��O DA FLEXBOX BASE (BASEADO NO 'CONTENT-SIDEBAR' DO KEVIN POWELL) */
+
+	.wrapper {
+		display: flex;
+		height: 100%;
+	}
+	
+	.wrapper >*.left-navbar {
+		flex: 1 1 15%;
+	}
+	
+	.wrapper >*.content {
+		flex: 1 1 85%;
+	}
+	
+	.left-navbar {
+		padding: 1%;
+		background-color: white;
+	}
+	
+	.content {
+		padding: 1%;
+		background-color: #013974;
+	}
+
+/* CONFIGURA��O DA FLEXBOX BASE (BASEADO NO 'CONTENT-SIDEBAR' DO KEVIN POWELL) */
+
+/* CONFIGURA��ES DA BARRA DE NAVEGA��O */
+
+	.logo {
+		width: auto;
+		height: auto;
+	}
+	
+	.iconeItem {
+		width: 10%;
+		height: auto;
+		filter: invert(51%) sepia(0%) saturate(2817%) hue-rotate(201deg) brightness(100%) contrast(79%);
+	}
+	
+	.menuItem {
+		padding: 3% 4% 3% 7%;
+		margin: 10% 0;
+		text-decoration: none;
+		font-size: 1.5vw;
+		color: #818181;
+		display: block;
+		border-radius: 0.3vw;
+	}
+	
+	.menuItem:hover {
+		color: #818181;
+		background-color: #f1f1f1;
+	}
+	
+	.menuSubtitulo {
+		font-weight: bold;
+	}
+	
+	.menuSubtitulo:hover {
+		background: white;
+	}
+
+/* CONFIGURA��ES DA BARRA DE NAVEGA��O */
+
+/* CONFIGURA��ES DA BARRA DE PESQUISA */
+
+	.barraDePesquisa {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 4%;
+	}
+	
+	.inputSearch {
+		font-size: 1vw;
+		width: 25vw;
+		padding: 2vh 3vh;
+		border: 1px solid #ccc;
+		border-radius: 0.3vw 0 0 0.3vw;
+		cursor: text;
+		color: #818181;
+	}
+	
+	.inputSearch:focus {
+		outline: none;
+	    border-color: #9ecaed;
+	}
+	
+	::placeholder {
+		color: #8d949e;
+	}
+	
+	.mainbtn {
+		font-weight: bold;
+		background-color: #013974;
+		color: white;
+		padding: 0 2vh;
+		border: none;
+		border-radius: 0 0.3vw 0.3vw 0;
+		cursor: pointer;
+	}
+	
+	.button2 {
+		letter-spacing: 0.03em;
+		font-size: 1vw;
+		background-color: #b3995d;
+	}
+	
+	.button2:hover {
+		background-color: #a68e56;
+	}
+	
+	.button2:active {
+		background-color: #998350;
+	}
+	
+	.sidebtn {
+		color: white;
+		border: none;
+		cursor: pointer;
+		letter-spacing: 0.03em;
+		font-weight: normal;
+		font-size: 2vh;
+		border-radius: 0.3vw;
+		margin-bottom: 0.5vw;
+	}
+	
+	.goldbtn {
+		background-color: #b3995d;
+	}
+	
+	.goldbtn:hover {
+		background-color: #a68e56;
+	}
+	
+	.goldbtn:active {
+		background-color: #998350;
+	}
+	
+	.redbtn {
+		
+		background-color: #c40000;
+	}
+	
+	.redbtn:hover {
+		background-color: #a80000;
+	}
+	
+	.redbtn:active {
+		background-color: #8f0000;
+	}
+
+/* CONFIGURA��ES DA BARRA DE PESQUISA */
+
+/* CONFIGURA��ES DAS ESTRUTURAS DOS LIVROS */
+
+	.estruturaPrincipal {
+		margin: 0 5% 6% 5%;
+	}
+	
+	.livros {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2em;
+		padding: 1vw 0;
+	}
+	
+	.livros > * {
+		flex: 1 1 100%;
+	}
+	
+	.estruturaLivro {
+		display: flex;
+		width: 100%;
+		background-color: rgba(255, 255, 255, 0.2);
+		border-radius: 0.3vw;
+		align-items: flex-start;
+		overflow: hidden;
+	}
+	
+	.estruturaLivro > * .livro {
+		flex: 1 1 30%;
+	}
+	
+	.estruturaLivro > * .informacoes {
+		flex: 1 1 70%;
+	}
+	
+	.informacoes {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		justify-content: space-between;
+		padding: 0 1vw;
+	}
+	
+	.informacoes > * .parteSuperior {
+		flex: 1 1 90%;
+	}
+	
+	.informacoes > * .parteInferior {
+		flex: 1 1 10%;
+	}
+	
+	.livro {
+		height: 12vw;
+		width: auto;
+	}
+	
+	.tituloLivro {
+		font-size: 2.3vh;
+		margin-top: 0.5vw;
+	}
+	
+	.subtituloLivro {
+		font-size: 1.7vh;
+		color: #a7a7a7;
+	}
+	
+	.descricaoLivro {
+		font-size: 2vh;
+	}
+	
+	.quantidadeLivro {
+		font-size: 1.7vh;
+	}
+
+/* CONFIGURA��ES DAS ESTRUTURAS DOS LIVROS */
+
+.p07vh {
+	padding: 0.7vh;
+}
+
+.table{
+	background-color: rgba(255, 255, 255, 0.2);
+	
+}
+
+
