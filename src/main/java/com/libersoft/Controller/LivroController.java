@@ -17,6 +17,8 @@ import com.libersoft.Model.Livro;
 
 @Controller
 public class LivroController {
+	long oldIsbn = 0;
+    
 	@Autowired
 	private LivroDAO livroDAO;
 
@@ -70,11 +72,38 @@ public class LivroController {
 		Livro liv = this.livroDAO.getById(idLivro);
 		model.addAttribute("livro", liv);
 		
+		oldIsbn = liv.getIsbn();
+		
 		return "editarLivro";
 	}
 	
 	@PostMapping("/bibliotecario/editarLivro")
 	public String postEditarLivro(@Valid Livro livro, BindingResult result) {
+		String erros = "";
+		
+		long isbn = livro.getIsbn();
+		
+		/* VERIFICA SE O CAMPO DE EMAIL E CPF
+         * É IGUAL AO REGISTRO NO ESTADO PASSADO.
+         * SE NÃO FOR IGUAL, IRÁ VERIFICAR SE EXISTE
+         * OUTRO ISBN IGUAL PARA NÃO
+         * HAVER ERROS NO CADASTRO */
+		if(oldIsbn != isbn) {
+			if(livroDAO.existsByIsbn(isbn)) {
+				erros += "isbn$livro$ISBN já cadastrado";
+			}
+		}
+		
+		/* TRATANDO OS ERROS PARA REGISTRAR ELES NO
+         * OBJETO 'RESULT', QUE ARMAZENA TODOS OS ERROS
+         * DOS CAMPOS DE CADASTRO */
+        if (!erros.isEmpty()) {         
+            System.out.println(erros);
+            String[] listaErros = erros.split("\\$");
+            for (int i = 0; i < listaErros.length; i += 3) {
+                result.rejectValue(listaErros[i], listaErros[i + 1], listaErros[i + 2]);
+            }
+        }
 		
 		if (result.hasErrors()) {
 			return "editarLivro";

@@ -70,7 +70,7 @@ public class Livro {
 		return idLivro;
 	}
 
-	public void setId(Integer idLivro) {
+	public void setIdLivro(Integer idLivro) {
 		this.idLivro = idLivro;
 	}
 
