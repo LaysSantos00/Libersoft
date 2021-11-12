@@ -164,4 +164,9 @@ public class BibliotecarioController {
 		return "redirect:listarBibliotecarios";
 	}
 	
+	//home para adm
+	@GetMapping("/adm/home")
+	public String homeAdm() {
+		return "homeAdm";
+	}
 }
