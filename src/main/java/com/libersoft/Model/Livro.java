@@ -23,6 +23,8 @@ public class Livro {
 	@Column(length = 50, nullable = false)
 	private String titulo;
 	
+	private long isbn;
+
 	@Min(1)
 	@Max(100)
 	private int volume;
@@ -128,4 +130,13 @@ public class Livro {
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
 	}
+	
+	public long getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(long isbn) {
+		this.isbn = isbn;
+	}
+	
 }

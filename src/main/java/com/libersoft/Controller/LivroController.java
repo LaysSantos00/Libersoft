@@ -38,6 +38,24 @@ public class LivroController {
 	@PostMapping("/bibliotecario/cadastroLivro")
 	public String cadastrarLivro(@Valid Livro livro, BindingResult result) {
 		
+		String erros = "";
+		
+		/* CONFERE SE OS CAMPOS DO TIPO ÚNICO JÁ
+		 * EXISTEM CADASTRADOS NO BANCO DE DADOS */
+		if (livroDAO.existsByIsbn(livro.getIsbn())) {
+			erros += "isbn$livro$ISBN já cadastrado$";
+		}
+		
+		/* TRATANDO OS ERROS PARA REGISTRAR ELES NO
+		 * OBJETO 'RESULT', QUE ARMAZENA TODOS OS ERROS
+		 * DOS CAMPOS DE CADASTRO */
+		if (!erros.isEmpty()) {
+			String[] listaErros = erros.split("\\$");
+			for (int i = 0; i < listaErros.length; i += 3) {
+				result.rejectValue(listaErros[i], listaErros[i + 1], listaErros[i + 2]);
+			}
+		}
+		
 		if (result.hasErrors()) {
 			return "cadastroLivro";
 		}

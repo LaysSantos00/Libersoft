@@ -7,5 +7,5 @@ import com.libersoft.Model.Livro;
 
 @Repository
 public interface LivroDAO extends JpaRepository<Livro, Integer>{
-
+	boolean existsByIsbn(long isbn);
 }

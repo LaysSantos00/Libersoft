@@ -56,7 +56,7 @@
 									<p class="descricaoLivro" th:text="${livr.resumo}"/>
 								</div>
 								<div class="parteInferior">
-									<p class="quantidadeLivro" th:text="|Quantidade disponível: ${livr.quantidade}|"/>
+									<p class="quantidadeLivro" th:text="|Quantidade disponível: ${livr.quantidade} · ISBN: ${livr.isbn}|"/>
 									<a th:href="@{/bibliotecario/editarLivro(idLivro=${livr.idLivro})}"><button class="sidebtn goldbtn p07vh">Editar</button> </a>
 									<a th:href="@{/bibliotecario/excluirLivro(idLivro=${livr.idLivro})}"><button class="sidebtn redbtn p07vh">Remover</button> </a>
 								</div>

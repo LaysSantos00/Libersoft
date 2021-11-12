@@ -32,6 +32,10 @@
 					<span th:if="${#fields.hasErrors('autor')}" th:errors="*{autor}"/>
 					<span th:if="${#fields.hasErrors('autor')}"><br/></span>
 					
+					<span th:if="${#fields.hasErrors('isbn')}">ISBN inválido:</span>
+					<span th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}"/>
+					<span th:if="${#fields.hasErrors('isbn')}"><br/></span>
+					
 					<span th:if="${#fields.hasErrors('categoria')}">Categoria inválida:</span>
 					<span th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"/>
 					<span th:if="${#fields.hasErrors('categoria')}"><br/></span>
@@ -57,13 +61,17 @@
 				 	<option th:value="'/img/livro/padrao.jpg'" th:text="'Sem imagem'"></option>
 				</select>
 				<input type="text" th:field="*{autor}" class="inputText" placeholder="Autor" maxlength="60">
+				
+				<label for="quantidade">ISBN:</label>
+				<input type="number" th:field="*{isbn}" class="inputText" min="1000000000" max="9999999999">
+				
 				<input type="text" th:field="*{categoria}" class="inputText" placeholder="Categoria" maxlength="50">
 				
 				<label for="volume">Volume:</label>
-				<input type="number" name="volume" th:field="*{volume}" class="inputText" placeholder="Volume">
+				<input type="number" name="volume" th:field="*{volume}" class="inputText">
 				
 				<label for="quantidade">Quantidade:</label>
-				<input type="number" name="quantidade" th:field="*{quantidade}" class="inputText" placeholder="Quantidade">
+				<input type="number" name="quantidade" th:field="*{quantidade}" class="inputText">
 				
 				<textarea style="resize: vertical;" maxlength="500" rows = "1" cols = "1" th:field="*{resumo}" class="inputText" placeholder="Resumo"/>
 				<span id="remaining" style="text-align:right;font-size:2vh;"></span>
