@@ -17,23 +17,34 @@ import com.libersoft.Model.Bibliotecario;
 public class LoginController {
 	@Autowired
 	private BibliotecarioDAO bibliotecarioDAO;
-	@Autowired
-	private LivroDAO livroDAO;
-
+	
+	@GetMapping("/index")
+	public String indexUrl() {
+		return "loginAluno";
+	}
+	
 	@GetMapping("/")
+	public String index() {
+		return "loginAluno";
+	}
+	
+	@GetMapping("/loginBibliotecario")
 	public String exibirLogin() {
-		return "login";
+		return "loginBibliotecario";
 	}
 
-	@PostMapping("/fazerLogin")
+	@PostMapping("/loginBibliotecario")
 	public String fazerLogin(String cpf, String senha, RedirectAttributes ra, HttpSession session) {
+		// RETIRAR MASK
+		cpf = cpf.replace(".", "").replace("-", "").replace("_", "");
+		
 		Bibliotecario bibliotecarioLogado = this.bibliotecarioDAO.findByLoginAndSenha(cpf, senha);
 		if (bibliotecarioLogado == null) {
-			ra.addFlashAttribute("mensagem", "Cpf ou senha inválidos");
-			return "redirect:/";
+			ra.addFlashAttribute("mensagem", "CPF ou senha inválido(s).");
+			return "redirect:/loginBibliotecario";
 		} else {
 			session.setAttribute("bibliotecarioLogado", bibliotecarioLogado);
-			return "redirect:/bibliotecario/listarLivros";
+			return "redirect:/bibliotecario/home";
 		}
 	}
 
