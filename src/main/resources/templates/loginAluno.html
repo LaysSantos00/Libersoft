@@ -9,24 +9,32 @@
 		<title>Libersoft</title>
 		
 		<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
-		<link rel="stylesheet" type="text/css" href="/css/cadastro.css">
+		<link rel="stylesheet" type="text/css" href="/css/login.css">
 	</head>
 	<body>
-		<div class="wrapper">		
-			<div class="cadastroTopo">
-				<label class="titulo">Entrar</label><br/>
-				<label class="subtitulo">Insira seu CPF e senha para entrar.</label><hr/>				
+		<div class = "wrapper">
+			<div class = "infobox">
+				<img src="/img/libersoft_logo.svg" class="logo"/>
+				<br>
+				<label class="descricao">A LiberSoft é uma plataforma para bibliotecas para gerenciar empréstimos de livros físicos. Aqui você pode consultar os livros disponíveis para empréstimo e a situação dos livros emprestados.</label>
 			</div>
-			
-			<form class="form" action="/loginAluno" method="post" th:object="${aluno}">				
-				<div class="erros" th:text="${mensagem}" th:if="${mensagem != null}"></div>
+			<div class="cadastro">		
+				<div class="cadastroTopo">
+					<label class="titulo">Entrar</label><br/>
+					<label class="subtitulo">Insira seu CPF e senha para entrar.</label><hr/>				
+				</div>
 				
-				<input type="text" name="cpf" class="inputText" placeholder="CPF" data-inputmask="'mask': '999.999.999-99'" required>
-				<input type="password" name="senha" class="inputText" placeholder="Senha" required>
-				
-				<input type="submit" class="mainbtn button1" value="Entrar">
-			</form>
-			<a href="/loginBibliotecario"><button class="mainbtn button2">Entrar como Bibliotecário</button></a>
+				<form class="form" action="/loginAluno" method="post" th:object="${aluno}">				
+					<div class="erros" th:text="${mensagem}" th:if="${mensagem != null}"></div>
+					
+					<input type="text" name="cpf" class="inputText" placeholder="CPF" data-inputmask="'mask': '999.999.999-99'" required>
+					<input type="password" name="senha" class="inputText" placeholder="Senha" required>
+					
+					<input type="submit" class="mainbtn button1" value="Entrar">
+				</form>
+				<hr>
+				<a href="/loginBibliotecario"><button class="mainbtn button2">Entrar como Bibliotecário</button></a>
+			</div>
 		</div>
 		
 		<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
