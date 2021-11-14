@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.libersoft.DAO.AlunoDAO;
 import com.libersoft.DAO.BibliotecarioDAO;
 import com.libersoft.DAO.LivroDAO;
+import com.libersoft.Model.Aluno;
 import com.libersoft.Model.Bibliotecario;
 
 
@@ -18,33 +20,38 @@ public class LoginController {
 	@Autowired
 	private BibliotecarioDAO bibliotecarioDAO;
 	
+	@Autowired
+	private AlunoDAO alunoDAO;
+	
 	@GetMapping("/index")
 	public String indexUrl() {
-		return "loginAluno";
+		return "login";
 	}
 	
 	@GetMapping("/")
-	public String index() {
-		return "loginAluno";
-	}
-	
-	@GetMapping("/loginBibliotecario")
 	public String exibirLogin() {
-		return "loginBibliotecario";
+		return "login";
 	}
 
-	@PostMapping("/loginBibliotecario")
+	@PostMapping("/")
 	public String fazerLogin(String cpf, String senha, RedirectAttributes ra, HttpSession session) {
 		// RETIRAR MASK
 		cpf = cpf.replace(".", "").replace("-", "").replace("_", "");
 		
-		Bibliotecario bibliotecarioLogado = this.bibliotecarioDAO.findByLoginAndSenha(cpf, senha);
-		if (bibliotecarioLogado == null) {
-			ra.addFlashAttribute("mensagem", "CPF ou senha inválido(s).");
-			return "redirect:/loginBibliotecario";
+		Aluno alunoLogado = this.alunoDAO.findByLoginAndSenha(cpf, senha);
+		
+		if (alunoLogado == null) {
+			Bibliotecario bibliotecarioLogado = this.bibliotecarioDAO.findByLoginAndSenha(cpf, senha);
+			if (bibliotecarioLogado == null) {
+				ra.addFlashAttribute("mensagem", "CPF ou senha inválido(s).");
+				return "redirect:/";
+			} else {
+				session.setAttribute("bibliotecarioLogado", bibliotecarioLogado);
+				return "redirect:/bibliotecario/home";
+			}
 		} else {
-			session.setAttribute("bibliotecarioLogado", bibliotecarioLogado);
-			return "redirect:/bibliotecario/home";
+			session.setAttribute("alunoLogado", alunoLogado);
+			return "redirect:/aluno/home";
 		}
 	}
 

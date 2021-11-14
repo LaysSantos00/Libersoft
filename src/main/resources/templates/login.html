@@ -24,7 +24,7 @@
 					<label class="subtitulo">Insira seu CPF e senha para entrar.</label><hr/>				
 				</div>
 				
-				<form class="form" action="/loginAluno" method="post" th:object="${aluno}">				
+				<form class="form" action="/" method="post">				
 					<div class="erros" th:text="${mensagem}" th:if="${mensagem != null}"></div>
 					
 					<input type="text" name="cpf" class="inputText" placeholder="CPF" data-inputmask="'mask': '999.999.999-99'" required>
@@ -33,7 +33,7 @@
 					<input type="submit" class="mainbtn button1" value="Entrar">
 				</form>
 				<hr>
-				<a href="/loginBibliotecario"><button class="mainbtn button2">Entrar como Bibliotecário</button></a>
+				<a href="/"><button class="mainbtn button2">Entrar como Administrador</button></a>
 			</div>
 		</div>
 		
