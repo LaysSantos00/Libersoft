@@ -10,7 +10,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.libersoft.DAO.AlunoDAO;
 import com.libersoft.DAO.BibliotecarioDAO;
-import com.libersoft.DAO.LivroDAO;
 import com.libersoft.Model.Aluno;
 import com.libersoft.Model.Bibliotecario;
 
