@@ -54,7 +54,25 @@ public class LoginController {
 			return "redirect:/aluno/home";
 		}
 	}
+	
+	@GetMapping("/loginAdm")
+	public String exibirLoginAdm() {
+		return "loginAdm";
+	}
 
+	@PostMapping("/loginAdm")
+	public String fazerLoginAdm(String usuario, String senha, RedirectAttributes ra, HttpSession session) {		
+		/*
+		 * 
+		 * 
+		 * PRECISA FAZER MODEL E DAO DO ADMINISTRADOR
+		 * 
+		 * 
+		 * 
+		 */
+		return "redirect:/adm/home";
+	}
+	
 	@GetMapping("/sair")
 	public String sair(HttpSession session) {
 		session.invalidate();

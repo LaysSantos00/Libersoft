@@ -6,7 +6,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width">
 		
-		<title>Libersoft</title>
+		<title>Libersoft - Administração</title>
 		
 		<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
 		<link rel="stylesheet" type="text/css" href="/css/login.css">
@@ -22,19 +22,19 @@
 			<div class="cadastro">	
 				<div class="cadastroTopo">
 					<label class="titulo">Entrar</label><br/>
-					<label class="subtitulo">Insira seu CPF e senha para entrar.</label><hr/>				
+					<label class="subtitulo">Insira seu usuário e senha para entrar.</label><hr/>				
 				</div>
 				
-				<form class="form" action="/loginBibliotecario" method="post" th:object="${bibliotecario}">				
+				<form class="form" action="/loginAdm" method="post">				
 					<div class="erros" th:text="${mensagem}" th:if="${mensagem != null}"></div>
 					
-					<input type="text" name="cpf" class="inputText" placeholder="CPF" data-inputmask="'mask': '999.999.999-99'" required>
+					<input type="text" name="usuario" class="inputText" placeholder="Usuário" required>
 					<input type="password" name="senha" class="inputText" placeholder="Senha" required>
 					
 					<input type="submit" class="mainbtn button1" value="Entrar">
 				</form>
 				<hr>
-				<a href="/"><button class="mainbtn button2">Entrar como Aluno</button></a>
+				<a href="/"><button class="mainbtn button2">Voltar</button></a>
 			</div>
 			
 			<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
