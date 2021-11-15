@@ -6,7 +6,7 @@
 		<title>Home</title>
 		
 		<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
-		<link rel="stylesheet" href="/css/livros.css">
+		<link rel="stylesheet" href="/css/home.css">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -21,13 +21,23 @@
 				<p class="menuItem menuSubtitulo">Adm</p>
 				
 				
-				<a href="/adm/listarBibliotecarios" class="menuItem">
-				<img src="/img/avatar_padrao.svg" class="iconeItem"/> Bibliotecarios</a>
+				<a href="listarBibliotecarios" class="menuItem">
+				<img src="/img/avatar_padrao.svg" class="iconeItem" /> Bibliotecarios</a>
+				
+				<a href="/adm/listarLivros" class="menuItem">
+				<img src="/img/livros.svg" class="iconeItem"/> Livros</a>
+				
+				<a href="/adm/listarAlunosAdm" class="menuItem">
+				<img src="/img/avatar_padrao.svg" class="iconeItem"/> Alunos</a>
+				
+				<a href="" class="menuItem">
+				<img src="/img/loan.png" class="iconeItem"/> Emprestimo</a>
 				
 				<p class="menuItem menuSubtitulo">Você</p>
 				
-				<a href="meuPerfil.html" class="menuItem">
+				<a href="/adm/meuPerfilAdm" class="menuItem">
 				<img src="/img/avatar_padrao.svg" class="iconeItem"/> Meu Perfil</a>
+				
 				<a href="/login" class="menuItem">
 				<img src="/img/sair.svg" class="iconeItem"/> Sair</a> 
 			</div>
@@ -37,6 +47,57 @@
 					<input type="search" name="q" class="inputSearch" placeholder="Procurar por livros...">
 					<button class="mainbtn button2">Pesquisar</button>
 				</div>
+							<!--conteudo-->
+				
+				<div class="recomendacoes">
+					<p>Mais Lidos</p>
+					<div class="livros">
+						<div class="estruturaLivro">
+							<a href="https://google.com/" target="_blank">
+								<img src="/img/livro/sistemas_operacionais_andrew_tenembaum.jpg" class="livro">
+								<span id="tituloLivro1" class="tituloLivro">Sistemas Operacionais Modernos - 2ª Edição</span>
+								<br/>
+								<span id="autorLivro1" class="autorLivro">Andrew S. Tenembaum</span>
+							</a>
+						</div>
+						
+						<div class="estruturaLivro">
+							<a href="https://google.com/" target="_blank">
+								<img src="/img/livro/codigo_limpo.jpg" class="livro">
+								<span id="tituloLivro2" class="tituloLivro">Código Limpo</span>
+								<br/>
+								<span id="autorLivro2" class="autorLivro">Robert C. Martin</span>
+							</a>
+						</div>
+						
+						<div class="estruturaLivro">
+							<a href="https://google.com/" target="_blank">
+								<img src="/img/livro/sistemas_operacionais_andrew_tenembaum.jpg" class="livro">
+								<span id="tituloLivro3" class="tituloLivro">Sistemas Operacionais Modernos - 2ª Edição</span>
+								<br/>
+								<span id="autorLivro3" class="autorLivro">Andrew S. Tenembaum</span>
+							</a>
+						</div>
+						
+						<div class="estruturaLivro">
+							<a href="https://google.com/" target="_blank">
+								<img src="/img/livro/codigo_limpo.jpg" class="livro">
+								<span id="tituloLivro4" class="tituloLivro">Código Limpo</span>
+								<br/>
+								<span id="autorLivro4" class="autorLivro">Robert C. Martin</span>
+							</a>
+						</div>
+						
+						<div class="estruturaLivro">
+							<a href="https://google.com/" target="_blank">
+								<img src="/img/livro/sistemas_operacionais_andrew_tenembaum.jpg" class="livro">
+								<span id="tituloLivro5" class="tituloLivro">Sistemas Operacionais Modernos - 2ª Edição</span>
+								<br/>
+								<span id="autorLivro5" class="autorLivro">Andrew S. Tenembaum</span>
+							</a>
+						</div>
+					</div>
+				</div>	
 				
 				
 			</div>

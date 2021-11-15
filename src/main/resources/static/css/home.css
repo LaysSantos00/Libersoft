@@ -211,24 +211,15 @@
 		margin: 0 5% 6% 5%;
 	}
 	
-	.livros {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 2em;
-		padding: 1vw 0;
-	}
 	
-	.livros > * {
-		flex: 1 1 100%;
-	}
+	
+	
 	
 	.estruturaLivro {
-		display: flex;
 		width: 100%;
 		background-color: rgba(255, 255, 255, 0.2);
 		border-radius: 0.3vw;
 		align-items: flex-start;
-		overflow: hidden;
 	}
 	
 	.estruturaLivro > * .livro {
@@ -255,14 +246,7 @@
 		flex: 1 1 10%;
 	}
 	
-	.livro {
-	    float: left;
-	    width:  12vw;
-	    height: 11vw;
-	    padding: 1vw 0;
-	    object-fit: scale-down;
-	    background-color: rgba(255, 255, 255, 0.2);
-}
+	
 	
 	.tituloLivro {
 		font-size: 2.3vh;
@@ -279,10 +263,7 @@
   		word-break: break-word;
 	}
 	
-	.quantidadeLivro {
-		font-size: 1.7vh;
-	}
-
+	
 /* CONFIGURACOES DAS ESTRUTURAS DOS LIVROS */
 
 .p07vh {
@@ -299,3 +280,69 @@
 
 
 /*css da tabela */
+
+/* CONFIGURAÇÕES DAS ESTRUTURAS DOS LIVROS */
+
+	.recomendacoes, .meusLivros {
+		margin: 0 5% 6% 5%;
+	}
+	
+	.livros {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2em;
+		padding: 1.5% 0;
+	}
+	
+	.livros {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2em;
+		padding: 1vw 0;
+	}
+	/*para ajustar a visualização de livros em home
+	.livro {
+	    float: left;
+	    width:  100%;
+	    height: 11rem;
+	    background-color: rgba(255, 255, 255, 0.2);
+	    object-fit: contain;
+}*/
+
+
+/* CONFIGURAÇÕES DAS ESTRUTURAS DOS LIVROS */
+
+	.recomendacoes, .meusLivros {
+		margin: 0 5% 6% 5%;
+	}
+	
+	.livros {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2em;
+		padding: 1.5% 0;
+	}
+	
+	.estruturaLivro {
+		width: 12vw;
+		height: 12vw;
+		background-color: rgba(255, 255, 255, 0.2);
+		border-radius: 0.3vw;
+	}
+	
+	.livro {
+		height: 100%;
+		width: 100%;
+		object-fit: contain;
+	}
+	
+	.tituloLivro {
+		font-size: 1vw;
+	}
+	
+	.autorLivro {
+		font-size: 0.7vw;
+		color: #a7a7a7;
+	}
+
+/* CONFIGURAÇÕES DAS ESTRUTURAS DOS LIVROS */
