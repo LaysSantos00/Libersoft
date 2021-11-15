@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width">
+		
+		<title>Cadastro de Alunos</title>
+		
+		<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/css/cadastro.css">
+	</head>
+	<body>
+		<div class="wrapper">		
+			<div class="cadastroTopo">
+				<label class="titulo">Cadastro</label><br/>
+				<label class="subtitulo">Insira as informações do novo usuário.</label><hr/>				
+			</div>
+			
+			<form class="form" action="/bibliotecario/cadastroEmprestimo" method="post" th:object="${aluno}">
+				<input type="hidden" th:field="*{idAluno}"/>
+				
+				<div th:if="${#fields.hasErrors()}" class="erros">
+					<span th:if="${#fields.hasErrors('cpf')}">CPF inválido:</span>
+					<span th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"/>
+					<span th:if="${#fields.hasErrors('cpf')}"><br/></span>
+				</div>
+				
+				<input type="text" th:field="*{cpf}" class="inputText" placeholder="CPF" data-inputmask="'mask': '999.999.999-99'">
+				
+				
+				<input type="submit" class="mainbtn button1" value="Cadastre">
+			</form>
+
+			<a href="/bibliotecario/listarAlunos"><button class="mainbtn button1">Lista Alunos</button></a>
+		</div>
+		
+		<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+		<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+		<script th:src="@{/assets/inputmask/jquery.inputmask.min.js}"></script>
+		
+		<script>
+		    $(":input").inputmask();
+		</script>
+	</body>
+</html>

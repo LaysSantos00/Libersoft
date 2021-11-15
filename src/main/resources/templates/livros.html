@@ -3,7 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
-		<title>Livros</title>
+		<title>LiberSoft</title>
 		
 		<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
 		<link rel="stylesheet" href="/css/livros.css">
@@ -15,21 +15,21 @@
 				
 				<hr/>
 				
-				<a href="home.html" class="menuItem">
+				<a href="/aluno/home" class="menuItem">
 				<img src="/img/pagina_inicial.svg" class="iconeItem"/> Página Inicial</a>
 				
-				<p class="menuItem menuSubtitulo">Bibliotecário</p>
+				<p class="menuItem menuSubtitulo">Aluno</p>
 				
-				<a href="listarLivros" class="menuItem">
+				<a href="livros" class="menuItem">
 				<img src="/img/livros.svg" class="iconeItem"/> Livros</a>
-				<a href="listarAlunos" class="menuItem">
-				<img src="/img/avatar_padrao.svg" class="iconeItem"/> Alunos</a>
+				<a href="" class="menuItem">
+				<img src="/img/livros.svg" class="iconeItem"/> Meus livros</a>
 				
 				<p class="menuItem menuSubtitulo">Você</p>
 				
 				<a href="meuPerfil.html" class="menuItem">
 				<img src="/img/avatar_padrao.svg" class="iconeItem"/> Meu Perfil</a>
-				<a href="login.html" class="menuItem">
+				<a href="/" class="menuItem">
 				<img src="/img/sair.svg" class="iconeItem"/> Sair</a> 
 			</div>
 			
@@ -42,7 +42,6 @@
 				<div class="estruturaPrincipal">
 					<p>
 					Livros
-					<a href="/bibliotecario/exibirFormLivro"><button class="sidebtn goldbtn p07vh">Inserir novo livro</button ></a>
 					</p>
 					<div class="livros">
 						<div th:each="livr : ${livros}" class="estruturaLivro">
@@ -56,9 +55,7 @@
 									<p class="descricaoLivro" th:text="${livr.resumo}"/>
 								</div>
 								<div class="parteInferior">
-									<p class="quantidadeLivro" th:text="|Quantidade disponível: ${livr.quantidade}|"/>
-									<a th:href="@{/bibliotecario/editarLivro(idLivro=${livr.idLivro})}"><button class="sidebtn goldbtn p07vh">Editar</button> </a>
-									<a th:href="@{/bibliotecario/excluirLivro(idLivro=${livr.idLivro})}"><button class="sidebtn redbtn p07vh">Remover</button> </a>
+									<p class="quantidadeLivro" th:text="|Quantidade disponível: ${livr.quantidade} · ISBN: ${livr.isbn}|"/>
 								</div>
 							</div>
 						</div>

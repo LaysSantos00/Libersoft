@@ -147,6 +147,20 @@ label {
 .button1:active {
 	background-color: #012c59;
 }
+
+.button2 {
+	font-size: 3vh;
+	margin: 0.5vh 0;
+	background-color: #b3995d;
+}
+
+.button2:hover {
+	background-color: #a68e56;
+}
+
+.button2:active {
+	background-color: #998350;
+}
 /* CONFIGURACOES DOS BOTOES */
 
 @media only screen and (min-width: 900px) {

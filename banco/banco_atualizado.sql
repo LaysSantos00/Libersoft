@@ -38,7 +38,7 @@ CREATE TABLE `administrador` (
 
 LOCK TABLES `administrador` WRITE;
 /*!40000 ALTER TABLE `administrador` DISABLE KEYS */;
-INSERT INTO `administrador` VALUES (3,'Helen Thomas','IVF58GLW5UI'),(9,'Jarrod Haley','KTN05IYT1DZ'),(11,'Abraham Casey','BHI57JOX6JO'),(15,'Julie Hines','AYU54GLD4AK'),(44,'Chandler Hicks','BUD71GNK6SS');
+INSERT INTO `administrador` VALUES (1, 'administrador','123@start');
 /*!40000 ALTER TABLE `administrador` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,12 +57,9 @@ CREATE TABLE `aluno` (
   `telefone` varchar(11) NOT NULL,
   `cpf` varchar(11) NOT NULL,
   `endereco` varchar(100) DEFAULT NULL,
-  `fk_bibliotecario` int DEFAULT NULL,
   PRIMARY KEY (`id_aluno`),
   UNIQUE KEY `email` (`email`),
-  UNIQUE KEY `cpf` (`cpf`),
-  KEY `fk_bibliotecario` (`fk_bibliotecario`),
-  CONSTRAINT `aluno_ibfk_1` FOREIGN KEY (`fk_bibliotecario`) REFERENCES `bibliotecario` (`id_bibliotecario`)
+  UNIQUE KEY `cpf` (`cpf`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -90,12 +87,9 @@ CREATE TABLE `bibliotecario` (
   `telefone` varchar(11) NOT NULL,
   `cpf` varchar(11) NOT NULL,
   `endereco` varchar(100) DEFAULT NULL,
-  `fk_administrador` int DEFAULT NULL,
   PRIMARY KEY (`id_bibliotecario`),
   UNIQUE KEY `email` (`email`),
-  UNIQUE KEY `cpf` (`cpf`),
-  KEY `fk_administrador` (`fk_administrador`),
-  CONSTRAINT `bibliotecario_ibfk_1` FOREIGN KEY (`fk_administrador`) REFERENCES `administrador` (`id_administrador`)
+  UNIQUE KEY `cpf` (`cpf`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -118,27 +112,16 @@ DROP TABLE IF EXISTS `emprestimo`;
 CREATE TABLE `emprestimo` (
   `id_emprestimo` int NOT NULL AUTO_INCREMENT,
   `data_emprestimo` date DEFAULT NULL,
-  `renovacoes` tinyint DEFAULT NULL,
   `data_devolucao` date DEFAULT NULL,
-  `status` varchar(45) DEFAULT NULL,
+  `renovacoes` tinyint DEFAULT NULL,
   `fk_aluno` int DEFAULT NULL,
   `fk_livro` int DEFAULT NULL,
-  `data_renovacao` date DEFAULT NULL,
   `situacao` varchar(20) NOT NULL,
-  `id_aluno` int DEFAULT NULL,
-  `id_bibliotecario` int DEFAULT NULL,
-  `id_livro` int DEFAULT NULL,
   PRIMARY KEY (`id_emprestimo`),
   KEY `fk_aluno` (`fk_aluno`),
   KEY `fk_livro` (`fk_livro`),
-  KEY `FK4bfgr7r9ni87xg6optg64tf8c` (`id_aluno`),
-  KEY `FKt179vmnlh6eq8wfrj0ytutayt` (`id_bibliotecario`),
-  KEY `FK9o80s7i3wn6ks727ytgmudti4` (`id_livro`),
   CONSTRAINT `emprestimo_ibfk_1` FOREIGN KEY (`fk_aluno`) REFERENCES `aluno` (`id_aluno`),
-  CONSTRAINT `emprestimo_ibfk_2` FOREIGN KEY (`fk_livro`) REFERENCES `livro` (`id_livro`),
-  CONSTRAINT `FK4bfgr7r9ni87xg6optg64tf8c` FOREIGN KEY (`id_aluno`) REFERENCES `aluno` (`id_aluno`),
-  CONSTRAINT `FK9o80s7i3wn6ks727ytgmudti4` FOREIGN KEY (`id_livro`) REFERENCES `livro` (`id_livro`),
-  CONSTRAINT `FKt179vmnlh6eq8wfrj0ytutayt` FOREIGN KEY (`id_bibliotecario`) REFERENCES `bibliotecario` (`id_bibliotecario`)
+  CONSTRAINT `emprestimo_ibfk_2` FOREIGN KEY (`fk_livro`) REFERENCES `livro` (`id_livro`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -162,15 +145,14 @@ CREATE TABLE `livro` (
   `id_livro` int NOT NULL AUTO_INCREMENT,
   `categoria` varchar(50) NOT NULL,
   `titulo` varchar(50) NOT NULL,
+  `isbn` bigint NOT NULL,
   `volume` smallint DEFAULT NULL,
   `autor` varchar(60) NOT NULL,
   `quantidade` smallint NOT NULL,
   `resumo` varchar(500) NOT NULL,
   `imagem` varchar(100) NOT NULL,
-  `fk_bibliotecario` int DEFAULT NULL,
   PRIMARY KEY (`id_livro`),
-  KEY `fk_bibliotecario` (`fk_bibliotecario`),
-  CONSTRAINT `livro_ibfk_1` FOREIGN KEY (`fk_bibliotecario`) REFERENCES `bibliotecario` (`id_bibliotecario`)
+  UNIQUE KEY `isbn` (`isbn`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -180,7 +162,6 @@ CREATE TABLE `livro` (
 
 LOCK TABLES `livro` WRITE;
 /*!40000 ALTER TABLE `livro` DISABLE KEYS */;
-INSERT INTO `livro` VALUES (1,'Doidera','Código Limpo',1,'Schopenhauer',123,'Um resumo bem grande Um resumo bem grande Um resumo bem grande Um resumo bem grande Um resumo bem grande Um resumo bem grande Um resumo bem grande Um resumo bem grande Um resumo bem grande ','/img/livro/codigo_limpo.jpg',NULL),(2,'Djow','Loucuras do Bananal',777,'Raul Crespiano',1,'Resumao grandaoooummmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm','/img/livro/padrao.jpg',NULL),(3,'Programação','Sistemas Operacionais Modernos',2,'Andrew S. Tenembaum',500,'Puta livro bom mermao Puta livro bom mermao Puta livro bom mermao Puta livro bom mermao Puta livro bom mermao Puta livro bom mermao Puta livro bom mermao ','/img/livro/sistemas_operacionais_modernos.jpg',NULL);
 /*!40000 ALTER TABLE `livro` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

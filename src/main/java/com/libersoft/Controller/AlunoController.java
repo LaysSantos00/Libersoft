@@ -161,5 +161,10 @@ public class AlunoController {
 		}
 		return "redirect:listarAlunos";
 	}
-
+	
+	//pagina para home de aluno
+	@GetMapping("/aluno/home")
+	public String homeAluno() {
+		return "homeAluno";
+	}
 }
