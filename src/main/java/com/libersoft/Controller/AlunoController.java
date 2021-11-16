@@ -167,4 +167,13 @@ public class AlunoController {
 	public String homeAluno() {
 		return "homeAluno";
 	}
+	
+	
+	//perfil aluno
+	
+		@GetMapping("/aluno/meuPerfilAluno")
+		public String meuPerfil() {
+			return "meuPerfilAluno";
+		}
+		
 }

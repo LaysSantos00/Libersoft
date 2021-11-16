@@ -24,10 +24,16 @@
 
 			<a href="listarBibliotecarios" class="menuItem">
 				<img src="/img/avatar_padrao.svg" class="iconeItem" /> Bibliotecarios</a>
+				<a href="/adm/listarLivros" class="menuItem">
+				<img src="/img/livros.svg" class="iconeItem"/> Livros</a>
+				<a href="/adm/listarAlunosAdm" class="menuItem">
+				<img src="/img/avatar_padrao.svg" class="iconeItem"/> Alunos</a>
+				<a href="" class="menuItem">
+				<img src="/img/loan.png" class="iconeItem"/> Emprestimo</a>
 
 			<p class="menuItem menuSubtitulo">Você</p>
 
-			<a href="meuPerfil.html" class="menuItem">
+			<a href="/adm/meuPerfilAdm" class="menuItem">
 				<img src="/img/avatar_padrao.svg" class="iconeItem" /> Meu Perfil</a>
 			<a href="/" class="menuItem">
 				<img src="/img/sair.svg" class="iconeItem" /> Sair</a>
@@ -45,12 +51,19 @@
 					<a href="/adm/cadastroBibliotecario"><button class="sidebtn goldbtn p07vh">Inserir novo
 							bibliotecario</button></a>
 				</p>
-				<table style="height: 100%;width: 100%" border="1">
+				<table class="table" border rules=rows style="height: 100%; width: 100%;" border:"1">
+					<colgroup>
+						<col style="width: 120px;">
+						<col style="width: 300px;">
+						<col style="width: 120px;">
+						<col style="width: 120px;">
+					</colgroup>
+				
 					<tr align="center">
-						<th scope="row">&nbsp;Nome&nbsp;</th>
-						<th>&nbsp;Email&nbsp;</th>
-						<th>&nbsp;Telefone&nbsp;</th>
-						<th>&nbsp;Opções&nbsp;</th>
+						<th id="letra" scope="row">&nbsp;Nome&nbsp;</th >
+						<th id="letra">&nbsp;Email&nbsp;</th >
+						<th id="letra">&nbsp;Telefone&nbsp;</th >
+						<th id="letra">&nbsp;Opções&nbsp;</th >
 					</tr>
 					<tr th:each="bibli : ${bibliotecarios}">
 						<td th:text="${bibli.nome}"></td>
@@ -58,12 +71,12 @@
 						<td th:text="${bibli.telefone}"></td>
 						<td>
 							<a
-								th:href="@{/adm/editarBibliotecario(idBibliotecario=${bibli.idBibliotecario})}"><button>Editar</button></a>&nbsp;&nbsp;
-							<a th:href="@{/adm/excluirBibliotecario(idBibliotecario=${bibli.idBibliotecario})}"><button>Remover</button>
+								th:href="@{/adm/editarBibliotecario(idBibliotecario=${bibli.idBibliotecario})}"><button class="sidebtn goldbtn p07vh">Editar</button ></a>&nbsp;&nbsp;
+							<a th:href="@{/adm/excluirBibliotecario(idBibliotecario=${bibli.idBibliotecario})}"><button class="sidebtn redbtn p07vh">Remover</button >
 							</a>
 						</td>
 					</tr>
-				</table>
+				</table >
 
 			</div>
 		</div>

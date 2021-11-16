@@ -1,0 +1,127 @@
+/* CONFIGURACOES GERAIS */
+
+	* {
+		font-family: 'Roboto-Regular', sans-serif;
+		padding: 0;
+		margin: 0;
+		color: white;
+		font-size: 0.9vw;
+	}
+	
+	html,
+	body {
+		height: 100%;
+		background-color: #013974;
+	}
+	
+	p {
+		margin: 0;
+		padding: 0;
+		font-size: 1.5vw;
+	}
+	
+	a {
+		text-decoration: none;
+	}
+	
+	::-webkit-scrollbar {
+	  width: 10px;
+	}
+	
+	::-webkit-scrollbar-track {
+	  background-color: #fff;
+	}
+	
+	::-webkit-scrollbar-thumb {
+	  background: #b3995d; 
+	}
+	
+	::-webkit-scrollbar-thumb:hover {
+	  background: #a68e56; 
+	}
+	
+	::-webkit-scrollbar-thumb:active {
+	  background: #998350; 
+	}
+
+/* CONFIGURACOES GERAIS */
+
+/* CONFIGURACOES DA FLEXBOX BASE (BASEADO NO 'CONTENT-SIDEBAR' DO KEVIN POWELL) */
+
+	.wrapper {
+		display: flex;
+		height: 100%;
+		overflow: hidden;
+	}
+	
+	.wrapper >*.left-navbar {
+		flex: 1 1 15%;
+	}
+	
+	.wrapper >*.content {
+		flex: 1 1 85%;
+	}
+	
+	.left-navbar {
+		overflow: scroll;
+		height: 100%;
+		padding: 1%;
+		background-color: white;
+	}
+	
+	.content {
+		overflow: scroll;
+		height: 100%;
+		padding: 1%;
+		background-color: #013974;
+	}
+
+/* CONFIGURACOES DA FLEXBOX BASE (BASEADO NO 'CONTENT-SIDEBAR' DO KEVIN POWELL) */
+
+/* CONFIGURACOES DA BARRA DE NAVEGACAO */
+
+	.logo {
+		width: auto;
+		height: auto;
+	}
+	
+	.iconeItem {
+		width: 10%;
+		height: auto;
+		filter: invert(51%) sepia(0%) saturate(2817%) hue-rotate(201deg) brightness(100%) contrast(79%);
+	}
+	
+	.menuItem {
+		padding: 3% 4% 3% 7%;
+		margin: 10% 0;
+		text-decoration: none;
+		font-size: 1.5vw;
+		color: #818181;
+		display: block;
+		border-radius: 0.3vw;
+	}
+	
+	.menuItem:hover {
+		color: #818181;
+		background-color: #f1f1f1;
+	}
+	
+	.menuSubtitulo {
+		font-weight: bold;
+	}
+	
+	.menuSubtitulo:hover {
+		background: white;
+	}
+
+/* CONFIGURACOES DA BARRA DE NAVEGACAO */
+
+/*informações do perfil*/
+
+	.perfil{
+		
+	}
+
+
+
+
