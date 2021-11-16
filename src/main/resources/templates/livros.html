@@ -39,7 +39,28 @@
 					<button class="mainbtn button2">Pesquisar</button>
 				</div>
 				
-				
+				<div class="estruturaPrincipal">
+					<p>
+					Livros
+					</p>
+					<div class="livros">
+						<div th:each="livr : ${livros}" class="estruturaLivro">
+							<div class="livroPlaceholder">
+								<img th:src="${livr.imagem}" class="livro"/>
+							</div>
+							<div class="informacoes">
+								<div class="parteSuperior">
+									<p class="tituloLivro" th:text="|${livr.titulo} - Volume: ${livr.volume}|"/>
+									<p class="subtituloLivro" th:text="|${livr.autor} - ${livr.categoria}|"/>
+									<p class="descricaoLivro" th:text="${livr.resumo}"/>
+								</div>
+								<div class="parteInferior">
+									<p class="quantidadeLivro" th:text="|Quantidade disponível: ${livr.quantidade} · ISBN: ${livr.isbn}|"/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</body >
