@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.libersoft.DAO.AlunoDAO;
 import com.libersoft.DAO.BibliotecarioDAO;
-import com.libersoft.DAO.LivroDAO;
+import com.libersoft.Model.Aluno;
 import com.libersoft.Model.Bibliotecario;
 
 
@@ -17,26 +18,60 @@ import com.libersoft.Model.Bibliotecario;
 public class LoginController {
 	@Autowired
 	private BibliotecarioDAO bibliotecarioDAO;
+	
 	@Autowired
-	private LivroDAO livroDAO;
-
+	private AlunoDAO alunoDAO;
+	
+	@GetMapping("/index")
+	public String indexUrl() {
+		return "login";
+	}
+	
 	@GetMapping("/")
 	public String exibirLogin() {
 		return "login";
 	}
 
-	@PostMapping("/fazerLogin")
+	@PostMapping("/")
 	public String fazerLogin(String cpf, String senha, RedirectAttributes ra, HttpSession session) {
-		Bibliotecario bibliotecarioLogado = this.bibliotecarioDAO.findByLoginAndSenha(cpf, senha);
-		if (bibliotecarioLogado == null) {
-			ra.addFlashAttribute("mensagem", "Cpf ou senha inválidos");
-			return "redirect:/";
+		// RETIRAR MASK
+		cpf = cpf.replace(".", "").replace("-", "").replace("_", "");
+		
+		Aluno alunoLogado = this.alunoDAO.findByLoginAndSenha(cpf, senha);
+		
+		if (alunoLogado == null) {
+			Bibliotecario bibliotecarioLogado = this.bibliotecarioDAO.findByLoginAndSenha(cpf, senha);
+			if (bibliotecarioLogado == null) {
+				ra.addFlashAttribute("mensagem", "CPF ou senha inválido(s).");
+				return "redirect:/";
+			} else {
+				session.setAttribute("bibliotecarioLogado", bibliotecarioLogado);
+				return "redirect:/bibliotecario/home";
+			}
 		} else {
-			session.setAttribute("bibliotecarioLogado", bibliotecarioLogado);
-			return "redirect:/bibliotecario/listarLivros";
+			session.setAttribute("alunoLogado", alunoLogado);
+			return "redirect:/aluno/home";
 		}
 	}
+	
+	@GetMapping("/loginAdm")
+	public String exibirLoginAdm() {
+		return "loginAdm";
+	}
 
+	@PostMapping("/loginAdm")
+	public String fazerLoginAdm(String usuario, String senha, RedirectAttributes ra, HttpSession session) {		
+		/*
+		 * 
+		 * 
+		 * PRECISA FAZER MODEL E DAO DO ADMINISTRADOR
+		 * 
+		 * 
+		 * 
+		 */
+		return "redirect:/adm/home";
+	}
+	
 	@GetMapping("/sair")
 	public String sair(HttpSession session) {
 		session.invalidate();

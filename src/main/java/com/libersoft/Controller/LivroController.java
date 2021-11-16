@@ -27,6 +27,11 @@ public class LivroController {
 		return this.livroDAO.findAll();
 	}
 
+	@GetMapping("/aluno/livros")
+	public String listarLivrosAluno() {
+		return "livros";
+	}
+	
 	@GetMapping("/bibliotecario/listarLivros")
 	public String listarLivros() {
 		return "listarLivros";

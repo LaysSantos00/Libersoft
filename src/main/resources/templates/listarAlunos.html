@@ -5,6 +5,7 @@
 		<meta charset="UTF-8">
 		<title>Alunos</title>
 		
+		<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
 		<link rel="stylesheet" href="/css/livros.css">
 	</head>
 	<body>
@@ -30,7 +31,7 @@
 				
 				<a href="meuPerfil.html" class="menuItem">
 				<img src="/img/avatar_padrao.svg" class="iconeItem"/> Meu Perfil</a>
-				<a href="/login" class="menuItem">
+				<a href="/" class="menuItem">
 				<img src="/img/sair.svg" class="iconeItem"/> Sair</a> 
 			</div>
 			
@@ -45,15 +46,24 @@
 					Alunos
 					<a href="/bibliotecario/cadastroAluno"><button class="sidebtn goldbtn p07vh">Inserir novo aluno</button ></a>
 					</p>
-				<table class="table" style="height: 100%;width: 100%" border="1">
-		<tr align="center">
-			<th scope="row">&nbsp;Nome&nbsp;</th>
-			<th>&nbsp;Email&nbsp;</th>
-			<th>&nbsp;Telefone&nbsp;</th>
-			<th>&nbsp;Endereço&nbsp;</th>
-			<th>&nbsp;CPF&nbsp;</th>
-			<th>&nbsp;&nbsp;</th>
-		</tr>
+				<table class="table" border rules=rows style="height: 100%; width: 100%;" border:"1">
+					<colgroup>
+						<col style="width: 120px;">
+						<col style="width: 300px;">
+						<col style="width: 120px;">
+						<col style="width: 120px;">
+					</colgroup>
+				
+				<tr align="center">
+					<th id="letra" scope="row">&nbsp;Nome&nbsp;</th>
+					<th id="letra">&nbsp;Email&nbsp;</th>
+					<th id="letra">&nbsp;Telefone&nbsp;</th>
+					<th id="letra">&nbsp;Endereço&nbsp;</th>
+					<th id="letra">&nbsp;CPF&nbsp;</th>
+					<th id="letra">&nbsp;Opções&nbsp;</th>
+				</tr>
+				
+				
 		<tr th:each="alun : ${alunos}">
 			<td th:text="${alun.nome}"></td>
 			<td th:text="${alun.email}"></td>
@@ -65,8 +75,7 @@
 				<a th:href="@{/bibliotecario/excluirAluno(idAluno=${alun.idAluno})}"><button class="sidebtn redbtn p07vh" >Remover</button > </a>
 			</td>
 		</tr>
-	</table>
-	<hr>
+	</table >
 	
 	
 				</div>

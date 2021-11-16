@@ -15,17 +15,15 @@
 				
 				<hr/>
 				
-				<a href="/bibliotecario/home" class="menuItem">
+				<a href="/aluno/home" class="menuItem">
 				<img src="/img/pagina_inicial.svg" class="iconeItem"/> Página Inicial</a>
 				
-				<p class="menuItem menuSubtitulo">Bibliotecário</p>
+				<p class="menuItem menuSubtitulo">Aluno</p>
 				
-				<a href="listarLivros" class="menuItem">
+				<a href="livros" class="menuItem">
 				<img src="/img/livros.svg" class="iconeItem"/> Livros</a>
-				<a href="/bibliotecario/listarAlunos" class="menuItem">
-				<img src="/img/avatar_padrao.svg" class="iconeItem"/> Alunos</a>
 				<a href="" class="menuItem">
-				<img src="/img/loan.png" class="iconeItem"/> Emprestimo</a>
+				<img src="/img/livros.svg" class="iconeItem"/> Meus livros</a>
 				
 				<p class="menuItem menuSubtitulo">Você</p>
 				
@@ -44,7 +42,6 @@
 				<div class="estruturaPrincipal">
 					<p>
 					Livros
-					<a href="/bibliotecario/cadastroLivro"><button class="sidebtn goldbtn p07vh">Inserir novo livro</button ></a>
 					</p>
 					<div class="livros">
 						<div th:each="livr : ${livros}" class="estruturaLivro">
@@ -59,8 +56,6 @@
 								</div>
 								<div class="parteInferior">
 									<p class="quantidadeLivro" th:text="|Quantidade disponível: ${livr.quantidade} · ISBN: ${livr.isbn}|"/>
-									<a th:href="@{/bibliotecario/editarLivro(idLivro=${livr.idLivro})}"><button class="sidebtn goldbtn p07vh">Editar</button> </a>
-									<a th:href="@{/bibliotecario/excluirLivro(idLivro=${livr.idLivro})}"><button class="sidebtn redbtn p07vh">Remover</button> </a>
 								</div>
 							</div>
 						</div>

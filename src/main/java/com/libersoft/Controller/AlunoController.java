@@ -162,13 +162,6 @@ public class AlunoController {
 		return "redirect:listarAlunos";
 	}
 	
-	//pagina para home bibliotecario
-	@GetMapping("/bibliotecario/home")
-	public String homeBibliotecario() {
-		return "homeBibliotecario";
-	}
-
-	
 	//pagina para home de aluno
 	@GetMapping("/aluno/home")
 	public String homeAluno() {

@@ -55,20 +55,26 @@ label {
 /* CONFIGURACOES GERAIS */
 
 /* CONFIGURACOES DO CONTEUDO */
-
 .wrapper {
 	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.wrapper > * {
+	flex-basis: 100%;
+}
+
+.cadastro {
+	display: flex;
 	flex-direction: column;
-	/*justify-content: center;*/
-	height: auto;
-	width: 50%;
-	padding: 1vh 2vh;
+	padding: 1.5vh;
 	border-radius: 5px;
 	box-shadow: 0 0 5px #000;
 	background-color: white;
 }
 
-.wrapper >*.form {
+.cadastro >*.form {
 	display:flex;
 	flex-direction: column;
 	width: 100%;
@@ -76,6 +82,25 @@ label {
 }
 
 /* CONFIGURACOES DO CONTEUDO */
+
+/* CONFIGURACOES INFOBOX */
+
+.infobox {
+	width: 70vh;
+	margin-right: 10vh;
+}
+
+.logo {
+	height: auto;
+	width: 40vh;
+	margin-bottom: 2vh;
+}
+
+.descricao {
+	color: white;
+}
+
+/* CONFIGURACOES INFOBOX */
 
 /* CONFIGURACOES DO TEXTO DO TOPO */
 .cadastroTopo {
@@ -149,7 +174,7 @@ label {
 }
 
 .button2 {
-	font-size: 3vh;
+	font-size: 2.5vh;
 	margin: 0.5vh 0;
 	background-color: #b3995d;
 }
@@ -162,27 +187,28 @@ label {
 	background-color: #998350;
 }
 /* CONFIGURACOES DOS BOTOES */
-
+/*
 @media only screen and (min-width: 900px) {
-	.wrapper {
+	.cadastro {
 		width: 40%;
 	}
 }
 
 @media only screen and (min-width: 1100px) {
-	.wrapper {
+	.cadastro {
 		width: 30%;
 	}
 }
 
 @media only screen and (min-width: 1300px) {
-	.wrapper {
+	.cadastro {
 		width: 25%;
 	}
 }
 
 @media only screen and (min-width: 1500px) {
-	.wrapper {
+	.cadastro {
 		width: 20%;
 	}
 }
+*/
