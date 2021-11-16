@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.libersoft.DAO.AlunoDAO;
+import com.libersoft.DAO.BibliotecarioDAO;
 import com.libersoft.Model.Aluno;
 import com.libersoft.Service.AlunoValidationService;
 
@@ -24,6 +25,9 @@ public class AlunoController {
 	
 	@Autowired
 	private AlunoDAO alunoDAO;
+	
+	@Autowired
+	private BibliotecarioDAO bibliotecarioDAO;
 
 	@ModelAttribute("alunos")
 	public List<Aluno> getLista() {
@@ -60,10 +64,10 @@ public class AlunoController {
 		
 		/* CONFERE SE OS CAMPOS DO TIPO ÚNICO JÁ
 		 * EXISTEM CADASTRADOS NO BANCO DE DADOS */
-		if (alunoDAO.existsByEmail(aluno.getEmail())) {
+		if (alunoDAO.existsByEmail(aluno.getEmail()) || bibliotecarioDAO.existsByEmail(aluno.getEmail())) {
 			erros += "email$aluno$email já cadastrado$";
 		}
-		if (alunoDAO.existsByCpf(aluno.getCpf())) {
+		if (alunoDAO.existsByCpf(aluno.getCpf()) || bibliotecarioDAO.existsByCpf(aluno.getCpf())) {
 			erros += "cpf$aluno$CPF já cadastrado$";	
 		}
 		
@@ -123,13 +127,13 @@ public class AlunoController {
 		 * OUTRO EMAIL OU CPF IGUAL PARA NÃO
 		 * HAVER ERROS NO CADASTRO */
 		if(!oldEmail.equals(email)) {
-			if (alunoDAO.existsByEmail(email)) {
+			if (alunoDAO.existsByEmail(email) || bibliotecarioDAO.existsByEmail(email)) {
 				erros += "email$aluno$email já cadastrado$";
 			}
 		}
 		
 		if (!oldCpf.equals(cpf)) {
-			if (alunoDAO.existsByCpf(cpf)) {
+			if (alunoDAO.existsByCpf(cpf) || bibliotecarioDAO.existsByCpf(cpf)) {
 				erros += "cpf$aluno$CPF já cadastrado$";	
 			}
 		}

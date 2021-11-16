@@ -71,10 +71,10 @@ public class BibliotecarioController {
 		/*
 		 * CONFERE SE OS CAMPOS DO TIPO ÚNICO JÁ EXISTEM CADASTRADOS NO BANCO DE DADOS
 		 */
-		if (bibliotecarioDAO.existsByEmail(bibliotecario.getEmail())) {
+		if (bibliotecarioDAO.existsByEmail(bibliotecario.getEmail()) || alunoDAO.existsByEmail(bibliotecario.getEmail())) {
 			erros += "email$bibliotecario$email já cadastrado$";
 		}
-		if (bibliotecarioDAO.existsByCpf(bibliotecario.getCpf())) {
+		if (bibliotecarioDAO.existsByCpf(bibliotecario.getCpf()) || alunoDAO.existsByCpf(bibliotecario.getCpf())) {
 			erros += "cpf$bibliotecario$CPF já cadastrado$";
 		}
 
@@ -140,13 +140,13 @@ public class BibliotecarioController {
 		 * HAVER ERROS NO CADASTRO
 		 */
 		if (!oldEmail.equals(email)) {
-			if (bibliotecarioDAO.existsByEmail(email)) {
+			if (bibliotecarioDAO.existsByEmail(email) || alunoDAO.existsByEmail(email)) {
 				erros += "email$bibliotecario$email já cadastrado$";
 			}
 		}
 
 		if (!oldCpf.equals(cpf)) {
-			if (bibliotecarioDAO.existsByCpf(cpf)) {
+			if (bibliotecarioDAO.existsByCpf(cpf) || alunoDAO.existsByCpf(cpf)) {
 				erros += "cpf$bibliotecario$CPF já cadastrado$";
 			}
 		}
