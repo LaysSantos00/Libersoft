@@ -133,12 +133,12 @@ public class LivroController {
 
 	@GetMapping("/adm/listarLivros")
 	public String listarLivrosAdm() {
-		return "listarLivroAdm";
+		return "listarLivrosAdm";
 	}
 	
 	@GetMapping("/adm/cadastroLivro")
 	public String exibirFormLivroAdm(Livro livro) {
-		return "cadLivroAdm";
+		return "cadastroLivro";
 	}
 
 	@PostMapping("/adm/cadastroLivro")
@@ -163,11 +163,11 @@ public class LivroController {
 		}
 		
 		if (result.hasErrors()) {
-			return "cadLivroAdm";
+			return "cadastroLivro";
 		}
 		
 		this.livroDAO.save(livro);
-		return "redirect:listarLivroAdm";
+		return "redirect:listarLivrosAdm";
 		
 	}
 
@@ -178,7 +178,7 @@ public class LivroController {
 		
 		oldIsbn = liv.getIsbn();
 		
-		return "editarLivroAdm";
+		return "editarLivro";
 	}
 	
 	@PostMapping("/adm/editarLivro")
@@ -210,12 +210,12 @@ public class LivroController {
         }
 		
 		if (result.hasErrors()) {
-			return "editarLivroAdm";
+			return "editarLivro";
 		}
 		
 		this.livroDAO.save(livro);
-		return "redirect:listarLivroAdm";
-		
+		return "redirect:listarLivrosAdm";
+	
 	}
 
 	@GetMapping("/adm/excluirLivro")
@@ -223,7 +223,7 @@ public class LivroController {
 		if (!(idLivro == null)) {
 			this.livroDAO.deleteById(idLivro);
 		}
-		return "redirect:listarLivroAdm";
+		return "redirect:listarLivrosAdm";
 	}
 
 }

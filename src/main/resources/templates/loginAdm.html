@@ -22,13 +22,13 @@
 			<div class="cadastro">	
 				<div class="cadastroTopo">
 					<label class="titulo">Entrar</label><br/>
-					<label class="subtitulo">Insira seu usuário e senha para entrar.</label><hr/>				
+					<label class="subtitulo">Insira o código de acesso e senha para entrar.</label><hr/>				
 				</div>
 				
 				<form class="form" action="/loginAdm" method="post">				
 					<div class="erros" th:text="${mensagem}" th:if="${mensagem != null}"></div>
-					
-					<input type="text" name="usuario" class="inputText" placeholder="Usuário" required>
+					<br>
+					<input type="text" name="codigoDeAcesso" class="inputText" placeholder="Código de acesso" required>
 					<input type="password" name="senha" class="inputText" placeholder="Senha" required>
 					
 					<input type="submit" class="mainbtn button1" value="Entrar">

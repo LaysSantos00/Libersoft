@@ -11,7 +11,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		if (request.getSession().getAttribute("alunoLogado") == null && 
-				request.getSession().getAttribute("bibliotecarioLogado") == null) {
+				request.getSession().getAttribute("bibliotecarioLogado") == null &&
+				request.getSession().getAttribute("admLogado") == null){
 			request.getRequestDispatcher("/acessoNegado").forward(request, response);
 			return false;
 		} else {

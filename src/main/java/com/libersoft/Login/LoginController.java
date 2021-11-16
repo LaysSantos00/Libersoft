@@ -8,25 +8,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.libersoft.DAO.AdmDAO;
 import com.libersoft.DAO.AlunoDAO;
 import com.libersoft.DAO.BibliotecarioDAO;
+import com.libersoft.Model.Adm;
 import com.libersoft.Model.Aluno;
 import com.libersoft.Model.Bibliotecario;
-
 
 @Controller
 public class LoginController {
 	@Autowired
 	private BibliotecarioDAO bibliotecarioDAO;
-	
+
 	@Autowired
 	private AlunoDAO alunoDAO;
-	
+
+	@Autowired
+	private AdmDAO admDAO;
+
 	@GetMapping("/index")
 	public String indexUrl() {
 		return "login";
 	}
-	
+
 	@GetMapping("/")
 	public String exibirLogin() {
 		return "login";
@@ -36,9 +40,9 @@ public class LoginController {
 	public String fazerLogin(String cpf, String senha, RedirectAttributes ra, HttpSession session) {
 		// RETIRAR MASK
 		cpf = cpf.replace(".", "").replace("-", "").replace("_", "");
-		
+
 		Aluno alunoLogado = this.alunoDAO.findByLoginAndSenha(cpf, senha);
-		
+
 		if (alunoLogado == null) {
 			Bibliotecario bibliotecarioLogado = this.bibliotecarioDAO.findByLoginAndSenha(cpf, senha);
 			if (bibliotecarioLogado == null) {
@@ -53,25 +57,25 @@ public class LoginController {
 			return "redirect:/aluno/home";
 		}
 	}
-	
+
 	@GetMapping("/loginAdm")
 	public String exibirLoginAdm() {
 		return "loginAdm";
 	}
 
 	@PostMapping("/loginAdm")
-	public String fazerLoginAdm(String usuario, String senha, RedirectAttributes ra, HttpSession session) {		
-		/*
-		 * 
-		 * 
-		 * PRECISA FAZER MODEL E DAO DO ADMINISTRADOR
-		 * 
-		 * 
-		 * 
-		 */
-		return "redirect:/adm/home";
+	public String fazerLoginAdm(String codigoDeAcesso, String senha, RedirectAttributes ra, HttpSession session) {
+		Adm admLogado = this.admDAO.findByCodigoAndSenha(codigoDeAcesso, senha);
+
+		if (admLogado == null) {
+			ra.addFlashAttribute("mensagem", "Código de acesso ou senha inválido(s).");
+			return "redirect:/loginAdm";
+		} else {
+			session.setAttribute("admLogado", admLogado);
+			return "redirect:/adm/homeAdm";
+		}
 	}
-	
+
 	@GetMapping("/sair")
 	public String sair(HttpSession session) {
 		session.invalidate();
