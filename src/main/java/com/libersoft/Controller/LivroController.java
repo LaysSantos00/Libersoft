@@ -11,7 +11,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.libersoft.DAO.EmprestimoDAO;
 import com.libersoft.DAO.LivroDAO;
 import com.libersoft.Model.Livro;
 
@@ -21,6 +23,9 @@ public class LivroController {
     
 	@Autowired
 	private LivroDAO livroDAO;
+	
+	@Autowired
+	private EmprestimoDAO emprestimoDAO;
 
 	@ModelAttribute("livros")
 	public List<Livro> getLista() {
@@ -219,7 +224,7 @@ public class LivroController {
 	}
 
 	@GetMapping("/adm/excluirLivro")
-	public String excluirLivroAdm(Integer idLivro) {
+	public String excluirLivroAdm(Integer idLivro, RedirectAttributes ra) {
 		if (!(idLivro == null)) {
 			this.livroDAO.deleteById(idLivro);
 		}

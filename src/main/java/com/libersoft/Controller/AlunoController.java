@@ -12,9 +12,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.libersoft.DAO.AlunoDAO;
 import com.libersoft.DAO.BibliotecarioDAO;
+import com.libersoft.DAO.EmprestimoDAO;
 import com.libersoft.Model.Aluno;
 import com.libersoft.Service.AlunoValidationService;
 
@@ -28,6 +30,9 @@ public class AlunoController {
 	
 	@Autowired
 	private BibliotecarioDAO bibliotecarioDAO;
+	
+	@Autowired
+	private EmprestimoDAO emprestimoDAO;
 
 	@ModelAttribute("alunos")
 	public List<Aluno> getLista() {
@@ -164,9 +169,9 @@ public class AlunoController {
 	}
 
 	@GetMapping("/bibliotecario/excluirAluno")
-	public String excluirAluno(Integer idAluno) {
+	public String excluirAluno(Integer idAluno, RedirectAttributes ra) {
 		if (!(idAluno == null)) {
-			this.alunoDAO.deleteById(idAluno);	
+			this.alunoDAO.deleteById(idAluno);
 		}
 		return "redirect:listarAlunos";
 	}
