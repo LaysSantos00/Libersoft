@@ -1,4 +1,4 @@
-package com.libersoft.Login;
+package com.libersoft.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -6,13 +6,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-public class LoginInterceptor extends HandlerInterceptorAdapter{
+public class AlunoInterceptor extends HandlerInterceptorAdapter{
+	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		if (request.getSession().getAttribute("alunoLogado") == null && 
-				request.getSession().getAttribute("bibliotecarioLogado") == null &&
-				request.getSession().getAttribute("admLogado") == null){
+		if (request.getSession().getAttribute("alunoLogado") == null) {
 			request.getRequestDispatcher("/acessoNegado").forward(request, response);
 			return false;
 		} else {

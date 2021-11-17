@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.libersoft.DAO.AdmDAO;
+import com.libersoft.DAO.AdministradorDAO;
 import com.libersoft.DAO.AlunoDAO;
 import com.libersoft.DAO.BibliotecarioDAO;
-import com.libersoft.Model.Adm;
+import com.libersoft.Model.Administrador;
 import com.libersoft.Model.Aluno;
 import com.libersoft.Model.Bibliotecario;
 
@@ -24,15 +24,47 @@ public class LoginController {
 	private AlunoDAO alunoDAO;
 
 	@Autowired
-	private AdmDAO admDAO;
+	private AdministradorDAO admDAO;
 
 	@GetMapping("/index")
-	public String indexUrl() {
+	public String indexUrl(HttpSession session) {
+		
+		Object verificarSessao = session.getAttribute("admLogado");
+		if (verificarSessao != null) {
+			session.invalidate();
+		} else {
+			verificarSessao = session.getAttribute("alunoLogado");
+			if (verificarSessao != null) {
+				session.invalidate();
+			} else {
+				verificarSessao = session.getAttribute("bibliotecarioLogado");
+				if (verificarSessao != null) {
+					session.invalidate();
+				}
+			}
+		}
+		
 		return "login";
 	}
 
 	@GetMapping("/")
-	public String exibirLogin() {
+	public String exibirLogin(HttpSession session) {
+		
+		Object verificarSessao = session.getAttribute("admLogado");
+		if (verificarSessao != null) {
+			session.invalidate();
+		} else {
+			verificarSessao = session.getAttribute("alunoLogado");
+			if (verificarSessao != null) {
+				session.invalidate();
+			} else {
+				verificarSessao = session.getAttribute("bibliotecarioLogado");
+				if (verificarSessao != null) {
+					session.invalidate();
+				}
+			}
+		}
+		
 		return "login";
 	}
 
@@ -43,29 +75,54 @@ public class LoginController {
 
 		Aluno alunoLogado = this.alunoDAO.findByLoginAndSenha(cpf, senha);
 
-		if (alunoLogado == null) {
+		if (alunoLogado != null) {
+			
+			Aluno aluno = this.alunoDAO.findByCpf(cpf);
+			session.setAttribute("alunoLogado", aluno);
+			return "redirect:/aluno/home";
+			
+		} else {
+			
 			Bibliotecario bibliotecarioLogado = this.bibliotecarioDAO.findByLoginAndSenha(cpf, senha);
+			
 			if (bibliotecarioLogado == null) {
 				ra.addFlashAttribute("mensagem", "CPF ou senha inválido(s).");
 				return "redirect:/";
 			} else {
-				session.setAttribute("bibliotecarioLogado", bibliotecarioLogado);
+				
+				Bibliotecario bibliotecario = this.bibliotecarioDAO.findByCpf(cpf);
+				session.setAttribute("bibliotecarioLogado", bibliotecario);
 				return "redirect:/bibliotecario/home";
+				
 			}
-		} else {
-			session.setAttribute("alunoLogado", alunoLogado);
-			return "redirect:/aluno/home";
+			
 		}
 	}
 
 	@GetMapping("/loginAdm")
-	public String exibirLoginAdm() {
+	public String exibirLoginAdm(HttpSession session) {
+
+		Object verificarSessao = session.getAttribute("admLogado");
+		if (verificarSessao != null) {
+			session.invalidate();
+		} else {
+			verificarSessao = session.getAttribute("alunoLogado");
+			if (verificarSessao != null) {
+				session.invalidate();
+			} else {
+				verificarSessao = session.getAttribute("bibliotecarioLogado");
+				if (verificarSessao != null) {
+					session.invalidate();
+				}
+			}
+		}
+		
 		return "loginAdm";
 	}
 
 	@PostMapping("/loginAdm")
 	public String fazerLoginAdm(String codigoDeAcesso, String senha, RedirectAttributes ra, HttpSession session) {
-		Adm admLogado = this.admDAO.findByCodigoAndSenha(codigoDeAcesso, senha);
+		Administrador admLogado = this.admDAO.findByUsuarioAndSenha(codigoDeAcesso, senha);
 
 		if (admLogado == null) {
 			ra.addFlashAttribute("mensagem", "Código de acesso ou senha inválido(s).");
@@ -84,6 +141,6 @@ public class LoginController {
 
 	@GetMapping("/acessoNegado")
 	public String acessoNegado() {
-		return "acesso_negado";
+		return "acessoNegado";
 	}
 }

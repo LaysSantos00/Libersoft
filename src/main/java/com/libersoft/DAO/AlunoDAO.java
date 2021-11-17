@@ -13,4 +13,6 @@ public interface AlunoDAO extends JpaRepository<Aluno, Integer>{
 	
 	@Query("SELECT u FROM Aluno u WHERE u.cpf = :cpf AND u.senha = :senha")
 	public Aluno findByLoginAndSenha(String cpf, String senha);
+	
+	public Aluno findByCpf(String cpf);
 }
