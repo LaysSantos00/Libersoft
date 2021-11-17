@@ -178,6 +178,10 @@
 		margin-bottom: 0.5vw;
 	}
 	
+	.colbtn {
+		margin: 1vh 0;
+	}
+	
 	.goldbtn {
 		background-color: #b3995d;
 	}
@@ -299,8 +303,14 @@
 	text-align: center;
 }
 
+.valor {
+	font-size: 1.7vh;
+}
+
 #letra{
-	font-size: 2.7vh;
+	font-size: 2vh;
+	padding: 1vh 0;
+	font-weight: normal;
 }
 
 

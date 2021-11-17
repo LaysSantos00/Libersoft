@@ -26,7 +26,7 @@
 				
 				<form class="form" action="/" method="post">				
 					<div class="erros" th:text="${mensagem}" th:if="${mensagem != null}"></div>
-					<br>
+					<br th:if="${mensagem != null}">
 					<input type="text" name="cpf" class="inputText" placeholder="CPF" data-inputmask="'mask': '999.999.999-99'" required>
 					<input type="password" name="senha" class="inputText" placeholder="Senha" required>
 					
