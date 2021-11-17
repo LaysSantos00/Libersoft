@@ -30,9 +30,14 @@ public class BibliotecarioController {
 
 	@Autowired
 	private AlunoDAO alunoDAO;
-
+	
+	@ModelAttribute("alunos")
+	public List<Aluno> getListaAlunos() {
+		return this.alunoDAO.findAll();
+	}
+	
 	@ModelAttribute("bibliotecarios")
-	public List<Bibliotecario> getLista() {
+	public List<Bibliotecario> getListaBibliotecarios() {
 		return this.bibliotecarioDAO.findAll();
 	}
 
@@ -190,7 +195,7 @@ public class BibliotecarioController {
 	}
 
 	// tudo relacionado ao ALUNO
-	@GetMapping("/adm/listarAlunosAdm")
+	@GetMapping("/adm/listarAlunos")
 	public String listarAlunosAdm() {
 		return "listarAlunosAdm";
 	}

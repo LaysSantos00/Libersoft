@@ -19,17 +19,20 @@
 			<a href="/adm/home" class="menuItem">
 				<img src="/img/pagina_inicial.svg" class="iconeItem" /> Página Inicial</a>
 
-			<p class="menuItem menuSubtitulo">Adm</p>
+			<p class="menuItem menuSubtitulo">Administração</p>
 
 
-			<a href="listarBibliotecarios" class="menuItem">
-				<img src="/img/avatar_padrao.svg" class="iconeItem" /> Bibliotecarios</a>
-				<a href="/adm/listarLivros" class="menuItem">
-				<img src="/img/livros.svg" class="iconeItem"/> Livros</a>
-				<a href="/adm/listarAlunosAdm" class="menuItem">
-				<img src="/img/avatar_padrao.svg" class="iconeItem"/> Alunos</a>
-				<a href="" class="menuItem">
-				<img src="/img/loan.png" class="iconeItem"/> Emprestimo</a>
+			<a href="/adm/listarBibliotecarios" class="menuItem">
+			<img src="/img/avatar_padrao.svg" class="iconeItem" /> Bibliotecários</a>
+			
+			<a href="/adm/listarLivros" class="menuItem">
+			<img src="/img/livros.svg" class="iconeItem"/> Livros</a>
+			
+			<a href="/adm/listarAlunos" class="menuItem">
+			<img src="/img/avatar_padrao.svg" class="iconeItem"/> Alunos</a>
+			
+			<a href="" class="menuItem">
+			<img src="/img/loan.png" class="iconeItem"/> Empréstimos</a>
 
 			<p class="menuItem menuSubtitulo">Você</p>
 
@@ -47,12 +50,13 @@
 
 			<div class="estruturaPrincipal">
 				<p>
-					Bibliotecarios
+					Bibliotecários
 					<a href="/adm/cadastroBibliotecario"><button class="sidebtn goldbtn p07vh">Inserir novo
 							bibliotecario</button></a>
 				</p>
 				<table class="table" border rules=rows style="height: 100%; width: 100%;" border:"1">
 					<colgroup>
+						<col style="width: auto;">
 						<col style="width: auto;">
 						<col style="width: auto;">
 						<col style="width: auto;">
@@ -63,11 +67,13 @@
 						<th id="letra" scope="row">Nome</th >
 						<th id="letra">Email</th >
 						<th id="letra">Telefone</th >
+						<th id="letra">CPF</th >
 					</tr>
 					<tr th:each="bibli : ${bibliotecarios}">
 						<td th:text="${bibli.nome}" class="valor"></td>
 						<td th:text="${bibli.email}" class="valor"></td>
 						<td th:text="${bibli.telefone}" class="valor"></td>
+						<td th:text="${bibli.cpf}" class="valor"></td>
 						<td style="border-left: thin solid white; height: auto;">
 							<a th:href="@{/adm/editarBibliotecario(idBibliotecario=${bibli.idBibliotecario})}"><button class="sidebtn colbtn goldbtn p07vh">Editar</button ></a>
 							<a th:href="@{/adm/excluirBibliotecario(idBibliotecario=${bibli.idBibliotecario})}"><button class="sidebtn colbtn redbtn p07vh">Remover</button ></a>

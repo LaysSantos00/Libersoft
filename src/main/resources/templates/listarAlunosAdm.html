@@ -5,6 +5,7 @@
 		<meta charset="UTF-8">
 		<title>Alunos</title>
 		
+		<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
 		<link rel="stylesheet" href="/css/livros.css">
 	</head>
 	<body>
@@ -14,22 +15,27 @@
 				
 				<hr/>
 				
-				<a href="/adm/home" class="menuItem">
+				<a href="/bibliotecario/home" class="menuItem">
 				<img src="/img/pagina_inicial.svg" class="iconeItem"/> Página Inicial</a>
 				
-				<p class="menuItem menuSubtitulo">Adm</p>
+				<p class="menuItem menuSubtitulo">Administração</p>
 				
-				<a href="listarBibliotecarios" class="menuItem">
-				<img src="/img/avatar_padrao.svg" class="iconeItem" /> Bibliotecarios</a>
+				
+				<a href="/adm/listarBibliotecarios" class="menuItem">
+				<img src="/img/avatar_padrao.svg" class="iconeItem" /> Bibliotecários</a>
+				
 				<a href="/adm/listarLivros" class="menuItem">
 				<img src="/img/livros.svg" class="iconeItem"/> Livros</a>
-				<a href="/adm/listarAlunosAdm" class="menuItem">
+				
+				<a href="/adm/listarAlunos" class="menuItem">
 				<img src="/img/avatar_padrao.svg" class="iconeItem"/> Alunos</a>
+				
 				<a href="" class="menuItem">
-				<img src="/img/loan.png" class="iconeItem"/> Emprestimo</a>
+				<img src="/img/loan.png" class="iconeItem"/> Empréstimos</a>
+				
 				<p class="menuItem menuSubtitulo">Você</p>
 				
-				<a href="/adm/meuPerfilAdm" class="menuItem">
+				<a href="meuPerfil.html" class="menuItem">
 				<img src="/img/avatar_padrao.svg" class="iconeItem"/> Meu Perfil</a>
 				<a href="/sair" class="menuItem">
 				<img src="/img/sair.svg" class="iconeItem"/> Sair</a> 
@@ -44,11 +50,10 @@
 				<div class="estruturaPrincipal">
 					<p>
 					Alunos
-					<a href="/adm/cadastroAluno"><button class="sidebtn goldbtn p07vh">Inserir novo aluno</button ></a>
+					<a href="/adm/listarAlunos"><button class="sidebtn goldbtn p07vh">Inserir novo aluno</button ></a>
 					</p>
 					
-					<table class="table" style="height: 100%;width: 100%" border="1">
-					
+					<table class="table" border rules=rows style="height: 100%; width: 100%;" border:"1">
 						<colgroup>
 							<col style="width: auto;">
 							<col style="width: auto;">
@@ -57,15 +62,16 @@
 							<col style="width: auto;">
 							<col style="width: auto;">
 						</colgroup>
-					
+				
 						<tr align="center">
-							<th id="letra" scope="row">Nome</th id="letra">
-							<th id="letra">Email</th id="letra">
-							<th id="letra">Telefone</th id="letra">
-							<th id="letra">Endereço</th id="letra">
-							<th id="letra">CPF</th id="letra">
+							<th id="letra" scope="row">Nome</th>
+							<th id="letra">Email</th>
+							<th id="letra">Telefone</th>
+							<th id="letra">Endereço</th>
+							<th id="letra">CPF</th>
 						</tr>
-						
+				
+				
 						<tr th:each="alun : ${alunos}">
 							<td th:text="${alun.nome}" class="valor"></td>
 							<td th:text="${alun.email}" class="valor"></td>
@@ -73,13 +79,11 @@
 							<td th:text="${alun.endereco}" class="valor"></td>
 							<td th:text="${alun.cpf}" class="valor"></td>
 							<td style="border-left: thin solid white; height: auto;">
-								<a th:href="@{/adm/editarAlunoAdm(idAluno=${alun.idAluno})}"><button class="sidebtn colbtn goldbtn p07vh" >Editar</button ></a>
-								<a th:href="@{/adm/excluirAlunoAdm(idAluno=${alun.idAluno})}"><button class="sidebtn colbtn redbtn p07vh" >Remover</button ></a>
+								<a th:href="@{/bibliotecario/editarAluno(idAluno=${alun.idAluno})}"><button class="sidebtn colbtn goldbtn p07vh" >Editar</button ></a>&nbsp;&nbsp;
+								<a th:href="@{/bibliotecario/excluirAluno(idAluno=${alun.idAluno})}"><button class="sidebtn colbtn redbtn p07vh" >Remover</button > </a>
 							</td >
 						</tr>
-					</table>
-					
-					<hr>
+					</table >
 					
 				</div>
 			</div>
