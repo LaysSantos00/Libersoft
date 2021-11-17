@@ -12,6 +12,7 @@ Esse projeto, feito por 6 estudantes, é o trabalho de conclusão de curso deles
 - HTML + CSS
 - Thymeleaf
 - jQuery + (https://robinherbots.github.io/Inputmask/)
+- JavaScript
 
 ##### Banco de Dados:
 - MySQL
