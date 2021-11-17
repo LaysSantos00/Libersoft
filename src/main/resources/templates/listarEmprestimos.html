@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>LiberSoft</title>
+
+	<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
+	<link rel="stylesheet" href="/css/livros.css">
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="left-navbar">
+			<img src="/img/libersoft_logo_blue.svg" class="logo" />
+
+			<hr />
+
+			<a href="/adm/home" class="menuItem">
+				<img src="/img/pagina_inicial.svg" class="iconeItem" /> Página Inicial</a>
+
+			<p class="menuItem menuSubtitulo">Bibliotecário</p>
+
+
+			<a href="listarLivros" class="menuItem">
+				<img src="/img/livros.svg" class="iconeItem"/> Livros</a>
+				<a href="/bibliotecario/listarAlunos" class="menuItem">
+				<img src="/img/avatar_padrao.svg" class="iconeItem"/> Alunos</a>
+				<a href="/bibliotecario/cadastroEmprestimo" class="menuItem">
+				<img src="/img/loan.png" class="iconeItem"/> Empréstimos</a>
+
+			<p class="menuItem menuSubtitulo">Você</p>
+
+			<a href="/adm/meuPerfilAdm" class="menuItem">
+				<img src="/img/avatar_padrao.svg" class="iconeItem" /> Meu Perfil</a>
+			<a href="/sair" class="menuItem">
+				<img src="/img/sair.svg" class="iconeItem" /> Sair</a>
+		</div>
+
+		<div class="content">
+			<div class="barraDePesquisa">
+				<input type="search" name="q" class="inputSearch" placeholder="Procurar por livros...">
+				<button class="mainbtn button2">Pesquisar</button>
+			</div>
+
+			<div class="estruturaPrincipal">
+				<p>
+					Empréstimos
+					<a href="/adm/cadastroEmprestimo"><button class="sidebtn goldbtn p07vh">Inserir novo
+							empréstimo</button></a>
+				</p>
+				<table class="table" border rules=rows style="height: 100%; width: 100%;" border:"1">
+					<colgroup>
+						<col style="width: auto;">
+						<col style="width: auto;">
+						<col style="width: auto;">
+						<col style="width: auto;">
+						<col style="width: auto;">
+					</colgroup>
+				
+					<tr align="center">
+						<th id="letra" scope="row">Nome do Aluno</th >
+						<th id="letra">Nome do Livro</th >
+						<th id="letra">Data de Empréstimo</th >
+						<th id="letra">Data de Devolução</th >
+						<th id="letra">Renovações Restantes</th >
+						<th id="letra">Situação</th >
+					</tr>
+					<tr th:each="emp : ${emprestimos}">
+						<td th:text="${emp.idAluno.getNome()}" class="valor"></td>
+						<td th:text="${emp.idLivro.getTitulo()}" class="valor"></td>
+						<td th:text="${emp.dataEmprestimo}" class="valor"></td>
+						<td th:text="${emp.dataDevolucao}" class="valor"></td>
+						<td th:text="${emp.renovacoes}" class="valor"></td>
+						<td th:text="${emp.situacao}" class="valor"></td>
+						<td style="border-left: thin solid white; height: auto;">
+							<a th:href="@{/adm/excluirEmprestimo(idEmprestimo=${emp.idEmprestimo})}"><button class="sidebtn colbtn redbtn p07vh">Remover</button ></a>
+						</td >
+					</tr>
+				</table >
+
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

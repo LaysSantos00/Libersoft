@@ -15,4 +15,6 @@ public interface AlunoDAO extends JpaRepository<Aluno, Integer>{
 	public Aluno findByLoginAndSenha(String cpf, String senha);
 	
 	public Aluno findByCpf(String cpf);
+	
+	public Aluno findByIdAluno(int id);
 }

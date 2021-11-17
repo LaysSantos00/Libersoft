@@ -184,11 +184,6 @@ public class BibliotecarioController {
 		return "redirect:listarBibliotecarios";
 	}
 
-	@GetMapping("/bibliotecario/home")
-	public String homeBibliotecario() {
-		return "homeBibliotecario";
-	}
-
 	@GetMapping("/adm/homeAdm")
 	public String homeAdm() {
 		return "homeAdm";

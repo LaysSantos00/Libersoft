@@ -8,4 +8,8 @@ import com.libersoft.Model.Livro;
 @Repository
 public interface LivroDAO extends JpaRepository<Livro, Integer>{
 	boolean existsByIsbn(long isbn);
+	
+	public Livro findByIsbn(long isbn);
+	
+	public Livro findByIdLivro(int id);
 }

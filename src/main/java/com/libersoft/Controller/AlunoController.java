@@ -33,6 +33,11 @@ public class AlunoController {
 	public List<Aluno> getLista() {
 		return this.alunoDAO.findAll();
 	}
+	
+	@GetMapping("/bibliotecario/home")
+	public String homeBibliotecario() {
+		return "homeBibliotecario";
+	}
 
 	@GetMapping("/bibliotecario/listarAlunos")
 	public String listarAlunos() {
@@ -171,8 +176,8 @@ public class AlunoController {
 		return "homeAluno";
 	}
 	
-		@GetMapping("/aluno/meuPerfilAluno")
-		public String meuPerfil() {
-			return "meuPerfilAluno";
-		}
+	@GetMapping("/aluno/meuPerfilAluno")
+	public String meuPerfil() {
+		return "meuPerfilAluno";
+	}
 }
