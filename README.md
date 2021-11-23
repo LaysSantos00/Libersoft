@@ -13,8 +13,19 @@ Esse projeto, feito por 6 estudantes, é o trabalho de conclusão de curso deles
 - Thymeleaf
 - jQuery + (https://robinherbots.github.io/Inputmask/)
 - JavaScript
-
 ##### Banco de Dados:
+- MySQL
+
+## Versão descontinuada: https://github.com/lauannecsilva/libersoftt
+#### Back-end:
+- Java EE
+- JPA
+#### Front-end:
+- HTML + CSS
+- JSF
+- PrimeFaces
+- JavaScript
+#### Banco de Dados:
 - MySQL
 
 ## Equipe:
