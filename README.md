@@ -22,6 +22,7 @@ Esse projeto, feito por 6 estudantes, é o trabalho de conclusão de curso deles
 - JPA
 #### Front-end:
 - HTML + CSS
+- JSP
 - JSF
 - PrimeFaces
 - JavaScript
